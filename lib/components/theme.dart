@@ -8,18 +8,18 @@ return ThemeData(
 
  brightness: Brightness.light,
  iconTheme: const IconThemeData(color:Colors.black),
-scaffoldBackgroundColor: MyColors.appbar,
- primaryColor: MyColors.focusedBorderColor,
+scaffoldBackgroundColor: MyColors.scaffoldBgColor,
+ primaryColor: MyColors.primaryColor,
  inputDecorationTheme: InputDecorationTheme(
   filled: true,
   fillColor: MaterialStateColor.resolveWith((states) {
 
 if (states.contains(MaterialState.focused)) {
-  return MyColors.focusedBorderColor;
+  return MyColors.focusedTextFiled;
 
 }
 else{
-  return MyColors.borderColor;
+  return MyColors.unfocusedTextFiled;
 }
 
 
@@ -31,7 +31,7 @@ enabledBorder: OutlineInputBorder(
 ),
 focusedBorder: OutlineInputBorder(
   borderRadius: BorderRadius.circular(Dimens.medium),
-  borderSide: const BorderSide(color: MyColors.focusedBorderColor)
+  borderSide: const BorderSide(color: MyColors.primaryColor)
 ) 
  )
 
