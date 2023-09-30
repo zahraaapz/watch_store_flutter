@@ -6,27 +6,33 @@ import '../gen/assets.gen.dart';
 import '../res/string.dart';
 
 class SendOtpScreen extends StatelessWidget {
- SendOtpScreen({super.key});
-TextEditingController controller=TextEditingController();
+  SendOtpScreen({super.key});
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    var size=MediaQuery.sizeOf(context);
+    var size = MediaQuery.sizeOf(context);
     return Scaffold(
       body: SafeArea(
           child: SizedBox(
-            width: double.infinity,
-            child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
             Image.asset(Assets.png.mainLogo.path),
             Dimens.large.height,
-            AppTextField(lable: Strings.enterYourNumber,
-             hint: Strings.hintPhoneNumber,
-              textEditingController: controller)
-                  ],
-                ),
-          )),
+            AppTextField(
+                lable: Strings.enterYourNumber,
+                hint: Strings.hintPhoneNumber,
+                textEditingController: controller),
+            AppTextField(
+              icon: Icon(Icons.inbox),
+                lable: Strings.enterYourNumber,
+                hint: Strings.hintPhoneNumber,
+                textEditingController: controller),
+          ],
+        ),
+      )),
     );
   }
 }
