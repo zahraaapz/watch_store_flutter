@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/extention.dart';
+import 'package:watch_store_flutter/components/text_style.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
 import 'package:watch_store_flutter/widget/app_text_field.dart';
 import 'package:watch_store_flutter/widget/main_button.dart';
@@ -22,9 +23,9 @@ class GetOtpScreen extends StatelessWidget {
           children: [
             Image.asset(Assets.png.mainLogo.path),
              Dimens.medium.height,
-            Text(Strings.otpCodeSendFor.replaceAll(Strings.replace, '0615995')),
+            Text(Strings.otpCodeSendFor.replaceAll(Strings.replace, '0615995'),style: MyStyles.title,),
              Dimens.small.height,
-            Text(Strings.wrongNumberEditNumber),
+            Text(Strings.wrongNumberEditNumber,style: MyStyles.primaryThemeTextStyle),
             Dimens.large.height,
 
             AppTextField(

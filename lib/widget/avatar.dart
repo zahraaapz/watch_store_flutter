@@ -3,6 +3,7 @@ import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/gen/assets.gen.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
 
+import '../components/text_style.dart';
 import '../res/string.dart';
 
 class Avatar extends StatelessWidget{
@@ -15,7 +16,7 @@ return Column(children: [
     child: Image.asset(Assets.png.avatar.path),
   ),
   Dimens.medium.height,
-  Text(Strings.chooseProfileImage)
+  Text(Strings.chooseProfileImage,style: MyStyles.avatarText)
 ],);
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/extention.dart';
+import 'package:watch_store_flutter/components/text_style.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
 
 class AppTextField extends StatelessWidget{
@@ -35,8 +36,8 @@ return Padding(
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(prefixLable),
-        Text(lable),
+        Text(prefixLable,style: MyStyles.title,),
+        Text(lable,style: MyStyles.title),
       ],
     ),
   ),
@@ -45,11 +46,13 @@ return Padding(
 width: size.width*.07,
 height: size.width*.75,
 child: TextField(
+  
 textAlign: textAlign,
 controller: controller,
 keyboardType: inputType,
 decoration: InputDecoration(
-  hintText: hint
+  hintText: hint,
+  hintStyle:  MyStyles.hint
 ),
 
 
