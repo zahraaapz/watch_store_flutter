@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
 import 'package:watch_store_flutter/widget/app_text_field.dart';
+import 'package:watch_store_flutter/widget/main_button.dart';
 import '../gen/assets.gen.dart';
 import '../res/string.dart';
 
@@ -21,15 +22,13 @@ class SendOtpScreen extends StatelessWidget {
           children: [
             Image.asset(Assets.png.mainLogo.path),
             Dimens.large.height,
-            AppTextField(
-                lable: Strings.enterYourNumber,
-                hint: Strings.hintPhoneNumber,
-                textEditingController: controller),
+         
             AppTextField(
               icon: Icon(Icons.inbox),
                 lable: Strings.enterYourNumber,
                 hint: Strings.hintPhoneNumber,
-                textEditingController: controller),
+                controller: controller),
+                mainButton(text: Strings.next, onPressed: (){})
           ],
         ),
       )),

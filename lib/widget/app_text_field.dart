@@ -5,8 +5,9 @@ import 'package:watch_store_flutter/res/dimens.dart';
 class AppTextField extends StatelessWidget{
 
 final String lable;
+final String prefixLable;
 final String hint;
-TextEditingController textEditingController;
+TextEditingController controller;
 final Widget icon;
 final TextAlign textAlign;
 final TextInputType? inputType;
@@ -14,8 +15,9 @@ AppTextField({
   super.key, 
   required this.lable,
   required this.hint,
-  required this.textEditingController,
+  required this.controller,
   this.icon=const SizedBox(),
+  this.prefixLable='',
   this.textAlign=TextAlign.center,
 this.inputType,
 });
@@ -28,14 +30,23 @@ return Padding(
   child:   Column(
   crossAxisAlignment: CrossAxisAlignment.end,
     children: [
-  Text(lable),
+  SizedBox(
+    width: size.width*.75,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(prefixLable),
+        Text(lable),
+      ],
+    ),
+  ),
   Dimens.medium.height,
   SizedBox(
 width: size.width*.07,
 height: size.width*.75,
 child: TextField(
 textAlign: textAlign,
-controller: textEditingController,
+controller: controller,
 keyboardType: inputType,
 decoration: InputDecoration(
   hintText: hint
