@@ -13,30 +13,30 @@ class GetOtpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
-    return Scaffold(
-      body: SafeArea(
-          child: SizedBox(
-        width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset(Assets.png.mainLogo.path),
-             Dimens.medium.height,
-            Text(Strings.otpCodeSendFor.replaceAll(Strings.replace, '0615995'),style: MyStyles.title,),
-             Dimens.small.height,
-            Text(Strings.wrongNumberEditNumber,style: MyStyles.primaryThemeTextStyle),
-            Dimens.large.height,
-
-            AppTextField(
-             prefixLable: '2:55',
-                lable: Strings.enterVerificationCode,
-                hint: Strings.hintVerificationCode,
-                controller: controller),
-                mainButton(text: Strings.next, onPressed: (){})
-          ],
+    return SafeArea(
+      child: Scaffold(
+        body: SizedBox(
+          width: double.infinity,
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(Assets.png.mainLogo.path),
+           Dimens.medium.height,
+          Text(Strings.otpCodeSendFor.replaceAll(Strings.replace, '0615995'),style: MyStyles.title,),
+           Dimens.small.height,
+          Text(Strings.wrongNumberEditNumber,style: MyStyles.primaryThemeTextStyle),
+          Dimens.large.height,
+          AppTextField(
+           prefixLable: '2:55',
+              lable: Strings.enterVerificationCode,
+              hint: Strings.hintVerificationCode,
+              controller: controller),
+              mainButton(text: Strings.next, onPressed: (){})
+        ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }

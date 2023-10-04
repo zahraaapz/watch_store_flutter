@@ -32,7 +32,7 @@ return Padding(
   crossAxisAlignment: CrossAxisAlignment.end,
     children: [
   SizedBox(
-    width: size.width*.75,
+    width: size.width*.7,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -43,8 +43,8 @@ return Padding(
   ),
   Dimens.medium.height,
   SizedBox(
-width: size.width*.07,
-height: size.width*.75,
+width: size.width*.7,
+height: size.height*.075,
 child: TextField(
   
 textAlign: textAlign,

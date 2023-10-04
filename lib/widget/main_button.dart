@@ -10,8 +10,8 @@ final String text;
   Widget build(BuildContext context) {
 Size size=MediaQuery.sizeOf(context);
 return SizedBox(
-width: size.width*.07,
-height: size.height*.75,
+width: size.width*.7,
+height: size.height*.075,
 child: ElevatedButton(
   style: AppButtonStyle.mainButtonStyle,
   onPressed: onPressed, child: Text(text)),

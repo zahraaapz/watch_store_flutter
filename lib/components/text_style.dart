@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/res/color.dart';
-
 import '../gen/fonts.gen.dart';
 
 abstract class MyStyles {

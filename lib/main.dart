@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/theme.dart';
+import 'package:watch_store_flutter/screens/get_otp_screen.dart';
+import 'package:watch_store_flutter/screens/register_screen%20.dart';
 import 'package:watch_store_flutter/screens/send_otp_screen.dart';
 
 void main() {
@@ -13,9 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Watch Store',
       theme: LightTheme(),
-      home: SendOtpScreen(),
+      home: RegisterScreen(),
     );
   }
 }
