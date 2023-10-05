@@ -1,33 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:watch_store_flutter/screens/mainscreen/bascket_screen.dart';
+import 'package:watch_store_flutter/screens/mainscreen/home_screen.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../widget/btmNav.dart';
+import 'profile_screen.dart';
 
+class BtmNavScreenIndex {
+  BtmNavScreenIndex._();
 
+  static const profile = 2;
+  static const home = 0;
+  static const basket = 1;
+}
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+class MainScreen extends StatefulWidget {
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int selectedIndex = BtmNavScreenIndex.home;
 
   @override
   Widget build(BuildContext context) {
-    var size=MediaQuery.sizeOf(context);
+    var size = MediaQuery.sizeOf(context);
     return Scaffold(
-      body: Stack(children: [
-
-        Positioned(
-          top: 0,
-          bottom: size.height*.1,
-          left: 0,
-          right: 0,
-          child: Container(
-color: Colors.red,
-
-        )) ,
-      BtmNavItem(onTap: (){}, iconPath: Assets.svg.user, isActive: false, text:"پروفایل",),
-      BtmNavItem(onTap: (){}, iconPath: Assets.svg.basket, isActive: false, text: "سبد خرید",),
-      BtmNavItem(onTap: (){}, iconPath: Assets.svg.home, isActive: true, text: 'خانه',),
-      ],),
+      body: Stack(
+        children: [
+          Positioned(
+              top: 0,
+              bottom: size.height * .1,
+              left: 0,
+              right: 0,
+              child: IndexedStack(index: selectedIndex, children: [
+                HomeScreen(),
+                BasketScreen(),
+                ProfileScreen(),
+              ])),
+          BtmNavItem(
+            onTap: () => btmNavOnPressed(index: BtmNavScreenIndex.profile),
+            iconPath: Assets.svg.user,
+            isActive: selectedIndex==BtmNavScreenIndex.profile,
+            text: "پروفایل",
+          ),
+          BtmNavItem(
+            onTap: () => btmNavOnPressed(index: BtmNavScreenIndex.basket),
+            iconPath: Assets.svg.basket,
+            isActive: selectedIndex==BtmNavScreenIndex.basket,
+            text: "سبد خرید",
+          ),
+          BtmNavItem(
+            onTap: () => btmNavOnPressed(index: BtmNavScreenIndex.home),
+            iconPath: Assets.svg.home,
+            isActive: selectedIndex==BtmNavScreenIndex.home,
+            text: 'خانه',
+          ),
+        ],
+      ),
     );
   }
-}
 
+  void btmNavOnPressed({required index}) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+}
