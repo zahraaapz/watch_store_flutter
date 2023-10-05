@@ -6,13 +6,14 @@ import 'package:watch_store_flutter/widget/app_text_field.dart';
 import 'package:watch_store_flutter/widget/main_button.dart';
 import '../gen/assets.gen.dart';
 import '../res/string.dart';
+import '../routes/names.dart';
 
 class GetOtpScreen extends StatelessWidget {
   GetOtpScreen({super.key});
-  TextEditingController controller = TextEditingController();
+ final TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
+  
     return SafeArea(
       child: Scaffold(
         body: SizedBox(
@@ -32,7 +33,10 @@ class GetOtpScreen extends StatelessWidget {
               lable: Strings.enterVerificationCode,
               hint: Strings.hintVerificationCode,
               controller: controller),
-              mainButton(text: Strings.next, onPressed: (){})
+              MainButton(text: Strings.next, onPressed: (){
+                                  Navigator.pushNamed(context, Screens.registerUser);
+
+              })
         ],
           ),
         ),

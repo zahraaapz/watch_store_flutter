@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/button_style.dart';
 
-class mainButton extends StatelessWidget{
-void Function() onPressed;
+class MainButton extends StatelessWidget{
+  final  void Function() onPressed;
 final String text;
-  mainButton({super.key,required this.text,required this.onPressed});
+  const MainButton({super.key,required this.text,required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

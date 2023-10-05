@@ -8,11 +8,11 @@ class AppTextField extends StatelessWidget{
 final String lable;
 final String prefixLable;
 final String hint;
-TextEditingController controller;
+ final TextEditingController controller;
 final Widget icon;
 final TextAlign textAlign;
 final TextInputType? inputType;
-AppTextField({
+const AppTextField({
   super.key, 
   required this.lable,
   required this.hint,

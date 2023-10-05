@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/theme.dart';
-import 'package:watch_store_flutter/screens/get_otp_screen.dart';
-import 'package:watch_store_flutter/screens/register_screen%20.dart';
-import 'package:watch_store_flutter/screens/send_otp_screen.dart';
+import 'package:watch_store_flutter/routes/names.dart';
+import 'package:watch_store_flutter/routes/routs.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Watch Store',
       theme: LightTheme(),
-      home: RegisterScreen(),
+      initialRoute:Screens.root ,
+      routes:routes ,
     );
   }
 }

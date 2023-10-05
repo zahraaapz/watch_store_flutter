@@ -6,23 +6,22 @@ import 'package:watch_store_flutter/widget/main_button.dart';
 
 import '../res/string.dart';
 import '../widget/app_text_field.dart';
+import '../widget/registerAppBar.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({super.key});
-  TextEditingController controller = TextEditingController();
+ final TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.sizeOf(context);
     return SafeArea(
         child: Scaffold(
+      appBar: RegisterationAppBar(size: size),
       body: SizedBox(
         width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-              Dimens.large.height,
-
-Avatar(),
-
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          Dimens.large.height,
+          Avatar(),
           AppTextField(
               lable: Strings.nameLastName,
               hint: Strings.hintNameLastName,
@@ -38,17 +37,17 @@ Avatar(),
           AppTextField(
               lable: Strings.postalCode,
               hint: Strings.hintPostalCode,
-              controller: controller),   
-               AppTextField(
-                icon: Icon(Icons.location_on),
+              controller: controller),
+          AppTextField(
+              icon: Icon(Icons.location_on),
               lable: Strings.location,
               hint: Strings.hintLocation,
               controller: controller),
-
-              mainButton(text: Strings.next, onPressed: (){}),
-              Dimens.large.height
+          MainButton(text: Strings.next, onPressed: () {}),
+          Dimens.large.height
         ]),
       ),
     ));
   }
 }
+
