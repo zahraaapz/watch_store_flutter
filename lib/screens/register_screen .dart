@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
+import 'package:watch_store_flutter/routes/names.dart';
 import 'package:watch_store_flutter/widget/avatar.dart';
 import 'package:watch_store_flutter/widget/main_button.dart';
 
@@ -43,7 +44,9 @@ class RegisterScreen extends StatelessWidget {
               lable: Strings.location,
               hint: Strings.hintLocation,
               controller: controller),
-          MainButton(text: Strings.next, onPressed: () {}),
+          MainButton(text: Strings.next, onPressed: () {
+            Navigator.pushNamed(context, Screens.mainScreen);
+          }),
           Dimens.large.height
         ]),
       ),
