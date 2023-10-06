@@ -5,8 +5,10 @@
   static const root = "/";
   static const getOtpScreen = "/getOtpScreen";
   static const sendOtpScreen = "/sendOtpScreen";
-  static const registerUser = "/registerUser";
+  static const registerUserScreen = "/registerUserScreen";
   static const mainScreen = "/mainScreen";
-  static const productList = "/productList";
+  static const productListScreen = "/productListScreen";
+  static const productSingleScreen = "/productSingleScreen";
+  static const basketScreen = "/basketScreen";
  
 }

@@ -34,7 +34,7 @@ class GetOtpScreen extends StatelessWidget {
               hint: Strings.hintVerificationCode,
               controller: controller),
               MainButton(text: Strings.next, onPressed: (){
-                                  Navigator.pushNamed(context, Screens.registerUser);
+                                  Navigator.pushNamed(context, Screens.registerUserScreen);
 
               })
         ],
