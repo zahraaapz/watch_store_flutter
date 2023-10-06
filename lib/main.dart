@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/theme.dart';
 import 'package:watch_store_flutter/routes/names.dart';
 import 'package:watch_store_flutter/routes/routes.dart';
+import 'package:watch_store_flutter/screens/mainscreen/bascket_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,8 +18,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Watch Store',
       theme: LightTheme(),
-      initialRoute:Screens.root ,
-      routes:routes ,
+      // initialRoute:Screens.root ,
+      // routes:routes 
+      home: BasketScreen(),
     );
   }
 }
