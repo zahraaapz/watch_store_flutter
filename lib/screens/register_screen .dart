@@ -24,27 +24,27 @@ class RegisterScreen extends StatelessWidget {
           Dimens.large.height,
           Avatar(),
           AppTextField(
-              lable: Strings.nameLastName,
-              hint: Strings.hintNameLastName,
+              lable: MyStrings.nameLastName,
+              hint: MyStrings.hintNameLastName,
               controller: controller),
           AppTextField(
-              lable: Strings.homeNumber,
-              hint: Strings.hintHomeNumber,
+              lable: MyStrings.homeNumber,
+              hint: MyStrings.hintHomeNumber,
               controller: controller),
           AppTextField(
-              lable: Strings.address,
-              hint: Strings.hintAddress,
+              lable: MyStrings.address,
+              hint: MyStrings.hintAddress,
               controller: controller),
           AppTextField(
-              lable: Strings.postalCode,
-              hint: Strings.hintPostalCode,
+              lable: MyStrings.postalCode,
+              hint: MyStrings.hintPostalCode,
               controller: controller),
           AppTextField(
               icon: Icon(Icons.location_on),
-              lable: Strings.location,
-              hint: Strings.hintLocation,
+              lable: MyStrings.location,
+              hint: MyStrings.hintLocation,
               controller: controller),
-          MainButton(text: Strings.next, onPressed: () {
+          MainButton(text: MyStrings.next, onPressed: () {
             Navigator.pushNamed(context, Screens.mainScreen);
           }),
           Dimens.large.height

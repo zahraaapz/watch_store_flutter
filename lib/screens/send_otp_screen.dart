@@ -25,10 +25,10 @@ class SendOtpScreen extends StatelessWidget {
          
             AppTextField(
               icon: Icon(Icons.inbox),
-                lable: Strings.enterYourNumber,
-                hint: Strings.hintPhoneNumber,
+                lable: MyStrings.enterYourNumber,
+                hint: MyStrings.hintPhoneNumber,
                 controller: controller),
-                MainButton(text: Strings.next, onPressed: (){
+                MainButton(text: MyStrings.next, onPressed: (){
                   Navigator.pushNamed(context, Screens.getOtpScreen);
                 })
           ],

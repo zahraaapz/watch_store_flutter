@@ -23,7 +23,7 @@ class RegisterationAppBar extends StatelessWidget implements PreferredSizeWidget
 
             }, icon: Icon(Icons.arrow_back)),
             Text(
-              Strings.register,
+              MyStrings.register,
               style: MyStyles.title,
             )
           ],

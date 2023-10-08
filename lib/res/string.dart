@@ -1,6 +1,6 @@
 
 
-abstract class Strings{
+abstract class MyStrings{
 
   static const String replace = "replace";
   static const String enterYourNumber = "شماره خود را وارد کنید";

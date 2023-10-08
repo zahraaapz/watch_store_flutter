@@ -16,7 +16,7 @@ return Column(children: [
     child: Image.asset(Assets.png.avatar.path),
   ),
   Dimens.medium.height,
-  Text(Strings.chooseProfileImage,style: MyStyles.avatarText)
+  Text(MyStrings.chooseProfileImage,style: MyStyles.avatarText)
 ],);
   }
 

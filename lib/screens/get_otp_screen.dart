@@ -24,16 +24,16 @@ class GetOtpScreen extends StatelessWidget {
         children: [
           Image.asset(Assets.png.mainLogo.path),
            Dimens.medium.height,
-          Text(Strings.otpCodeSendFor.replaceAll(Strings.replace, '0615995'),style: MyStyles.title,),
+          Text(MyStrings.otpCodeSendFor.replaceAll(MyStrings.replace, '0615995'),style: MyStyles.title,),
            Dimens.small.height,
-          Text(Strings.wrongNumberEditNumber,style: MyStyles.primaryThemeTextStyle),
+          Text(MyStrings.wrongNumberEditNumber,style: MyStyles.primaryThemeTextStyle),
           Dimens.large.height,
           AppTextField(
            prefixLable: '2:55',
-              lable: Strings.enterVerificationCode,
-              hint: Strings.hintVerificationCode,
+              lable: MyStrings.enterVerificationCode,
+              hint: MyStrings.hintVerificationCode,
               controller: controller),
-              MainButton(text: Strings.next, onPressed: (){
+              MainButton(text: MyStrings.next, onPressed: (){
                                   Navigator.pushNamed(context, Screens.registerUserScreen);
 
               })
