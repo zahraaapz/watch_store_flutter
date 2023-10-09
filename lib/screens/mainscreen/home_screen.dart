@@ -14,46 +14,43 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Scaffold(
-          body: Column(
-            children: [
-              searchBtn(
-                onTap: () {},
-              ),
-              AppSlider(),
-              Row(
-                children: [
-                  CatWidget(
-                      size: size,
-                      title: MyStrings.desktop,
-                      iconPath: Assets.svg.desktop,
-                      colors: MyColors.catDesktop,
-                      ontap: () {}),
-                  CatWidget(
-                      size: size,
-                      title: MyStrings.digital,
-                      iconPath: Assets.svg.digital,
-                      colors: MyColors.catDigital,
-                      ontap: () {}),
-                  CatWidget(
-                      size: size,
-                      title: MyStrings.smart,
-                      iconPath: Assets.svg.smart,
-                      colors: MyColors.catSmart,
-                      ontap: () {}),
-                  CatWidget(
-                      size: size,
-                      title: MyStrings.classic,
-                      iconPath: Assets.svg.clasic,
-                      colors: MyColors.catClassic,
-                      ontap: () {}),
-                ],
-              )
-            ],
-          ),
-        ),
+    return SingleChildScrollView(
+      child: Column(
+          children: [
+            searchBtn(
+              onTap: () {},
+            ),
+            AppSlider(),
+            Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CatWidget(
+                    size: size,
+                    title: MyStrings.desktop,
+                    iconPath: Assets.svg.desktop,
+                    colors: MyColors.catDesktop,
+                    ontap: () {}),
+                CatWidget(
+                    size: size,
+                    title: MyStrings.digital,
+                    iconPath: Assets.svg.digital,
+                    colors: MyColors.catDigital,
+                    ontap: () {}),
+                CatWidget(
+                    size: size,
+                    title: MyStrings.smart,
+                    iconPath: Assets.svg.smart,
+                    colors: MyColors.catSmart,
+                    ontap: () {}),
+                CatWidget(
+                    size: size,
+                    title: MyStrings.classic,
+                    iconPath: Assets.svg.clasic,
+                    colors: MyColors.catClassic,
+                    ontap: () {}),
+              ],
+            )
+          ],
+     
       ),
     );
   }

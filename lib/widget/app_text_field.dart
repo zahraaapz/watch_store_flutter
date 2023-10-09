@@ -27,7 +27,7 @@ this.inputType,
         var size=MediaQuery.sizeOf(context);
 
 return Padding(
-  padding:  EdgeInsets.all(MyDimens.medium),
+  padding:  const EdgeInsets.all(MyDimens.small),
   child:   Column(
   crossAxisAlignment: CrossAxisAlignment.end,
     children: [
@@ -41,7 +41,7 @@ return Padding(
       ],
     ),
   ),
-  MyDimens.medium.height,
+  MyDimens.small.height,
   SizedBox(
 width: size.width*.7,
 height: size.height*.075,

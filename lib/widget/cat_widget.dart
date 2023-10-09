@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:watch_store_flutter/components/extention.dart';
 
 import '../components/text_style.dart';
-import '../gen/assets.gen.dart';
+
 import '../res/dimens.dart';
-import '../res/string.dart';
+
 
 class CatWidget extends StatelessWidget {
   const CatWidget({
@@ -27,6 +29,7 @@ class CatWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
           Container(
+            padding: EdgeInsets.all(MyDimens.small),
             margin: const EdgeInsets.all(MyDimens.small),
             height:size.height*.1,
             width:size.height*.1,
@@ -36,9 +39,9 @@ class CatWidget extends StatelessWidget {
                 begin: Alignment.topCenter,
                 colors: colors
               ),borderRadius: BorderRadius.circular(MyDimens.large),
-           image: DecorationImage(image:Image.asset(Assets.svg.close).image,),
-          )),
+          
+          ),child: SvgPicture.asset(iconPath,height:10,width: 10,),),
               MyDimens.small.height ,
-              Text(MyStrings.classic,style: MyStyles.title.copyWith(fontSize: 18),) ],);
+              Text(title,style: MyStyles.title.copyWith(fontSize: 18),) ],);
   }
 }

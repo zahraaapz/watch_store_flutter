@@ -37,6 +37,7 @@ class _AppSliderState extends State<AppSlider> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment:CrossAxisAlignment.center,
       children: [
         SizedBox(
           height: 250,
@@ -53,7 +54,7 @@ class _AppSliderState extends State<AppSlider> {
                 },
               )),
         ),
-        Row(mainAxisAlignment: MainAxisAlignment.end,
+        Row(mainAxisAlignment: MainAxisAlignment.center,
           children: imgList.asMap().entries
               .map((e) => Padding(
                 padding: const EdgeInsets.all(MyDimens.small),
