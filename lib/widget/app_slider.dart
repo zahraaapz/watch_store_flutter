@@ -25,9 +25,9 @@ class _AppSliderState extends State<AppSlider> {
 
   late final List<Widget> items = imgList
       .map((e) => Padding(
-          padding: EdgeInsets.all(Dimens.large),
+          padding: EdgeInsets.all(MyDimens.large),
           child: ClipRRect(
-              borderRadius: BorderRadius.circular(Dimens.medium),
+              borderRadius: BorderRadius.circular(MyDimens.medium),
               child: Image.network(
                 e,
                 fit: BoxFit.cover,
@@ -56,7 +56,7 @@ class _AppSliderState extends State<AppSlider> {
         Row(mainAxisAlignment: MainAxisAlignment.end,
           children: imgList.asMap().entries
               .map((e) => Padding(
-                padding: const EdgeInsets.all(Dimens.small),
+                padding: const EdgeInsets.all(MyDimens.small),
                 child: GestureDetector(
                   onTap: () => _controller.animateToPage(e.key),
                   child: Container(

@@ -24,13 +24,13 @@ else{
 
 
   }),
-contentPadding: const EdgeInsets.all(Dimens.medium),
+contentPadding: const EdgeInsets.all(MyDimens.medium),
 enabledBorder: OutlineInputBorder(
-  borderRadius: BorderRadius.circular(Dimens.medium),
+  borderRadius: BorderRadius.circular(MyDimens.medium),
   borderSide: const BorderSide(color: MyColors.borderColor)
 ),
 focusedBorder: OutlineInputBorder(
-  borderRadius: BorderRadius.circular(Dimens.medium),
+  borderRadius: BorderRadius.circular(MyDimens.medium),
   borderSide: const BorderSide(color: MyColors.primaryColor)
 ) 
  )

@@ -1,4 +1,4 @@
-abstract class Dimens{
+abstract class MyDimens{
 
 static const double small=8;
 static const double medium=12;

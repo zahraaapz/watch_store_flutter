@@ -16,7 +16,7 @@ final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(Dimens.medium),
+      padding: const EdgeInsets.all(MyDimens.medium),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
@@ -38,7 +38,7 @@ final VoidCallback onTap;
         SvgPicture.asset(Assets.svg.search),
         const Text(MyStrings.searchProduct,style: MyStyles.hint,),
         Padding(
-          padding: const EdgeInsets.all(Dimens.small),
+          padding: const EdgeInsets.all(MyDimens.small),
           child: Image.asset(Assets.png.mainLogo.path),
         )
                   ]),  ),

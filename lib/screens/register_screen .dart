@@ -21,7 +21,7 @@ class RegisterScreen extends StatelessWidget {
       body: SizedBox(
         width: double.infinity,
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          Dimens.large.height,
+          MyDimens.large.height,
           Avatar(),
           AppTextField(
               lable: MyStrings.nameLastName,
@@ -47,7 +47,7 @@ class RegisterScreen extends StatelessWidget {
           MainButton(text: MyStrings.next, onPressed: () {
             Navigator.pushNamed(context, Screens.mainScreen);
           }),
-          Dimens.large.height
+          MyDimens.large.height
         ]),
       ),
     ));

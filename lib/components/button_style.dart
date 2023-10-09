@@ -4,7 +4,7 @@ import 'package:watch_store_flutter/res/dimens.dart';
 class AppButtonStyle{
 
 static ButtonStyle mainButtonStyle=ButtonStyle(
-  shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimens.medium)))
+  shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(MyDimens.medium)))
 );
 
 

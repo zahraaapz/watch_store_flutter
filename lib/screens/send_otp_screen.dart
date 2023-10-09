@@ -21,7 +21,7 @@ class SendOtpScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(Assets.png.mainLogo.path),
-            Dimens.large.height,
+            MyDimens.large.height,
          
             AppTextField(
               icon: Icon(Icons.inbox),

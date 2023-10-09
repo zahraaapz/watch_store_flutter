@@ -15,7 +15,7 @@ return Column(children: [
     borderRadius: BorderRadius.circular(1000),
     child: Image.asset(Assets.png.avatar.path),
   ),
-  Dimens.medium.height,
+  MyDimens.medium.height,
   Text(MyStrings.chooseProfileImage,style: MyStyles.avatarText)
 ],);
   }

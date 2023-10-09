@@ -70,7 +70,7 @@ const BtmNavItem({
       
       ,
       
-      Dimens.small.height,
+      MyDimens.small.height,
       
       Text(text,style: isActive?MyStyles.btmNavActive:MyStyles.btmNavInActive,)
       
