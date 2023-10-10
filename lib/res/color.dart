@@ -4,6 +4,8 @@ abstract class MyColors {
   static const Color title = Colors.black;
   static const Color hint = Colors.grey;
   static const Color scaffoldBgColor = Color.fromARGB(255, 251, 251, 251);
+  static const Color amazingColor = Color.fromARGB(255, 57, 24, 80);
+  static const Color oldPrice= Color.fromARGB(255, 191, 191, 191);
   static const Color unfocusedTextFiled = Color.fromARGB(255, 251, 251, 251);
   static const Color btmNavInActiveItem = Color.fromARGB(255, 196, 196, 196);
   static const Color shadow = Color.fromARGB(90, 0, 0, 0);
@@ -30,6 +32,10 @@ abstract class MyColors {
   ];  static const List<Color> catDigital = [
     Color(0XFFE183D4),
     Color(0xffffe6f5),
+  ];
+  static const List<Color> productBgGradiant = [
+  Color.fromARGB(255, 238, 238, 238),
+  Colors.white
   ];
 
 

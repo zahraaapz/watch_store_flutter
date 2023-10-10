@@ -40,7 +40,7 @@ class RegisterScreen extends StatelessWidget {
               hint: MyStrings.hintPostalCode,
               controller: controller),
           AppTextField(
-              icon: Icon(Icons.location_on),
+              icon: const Icon(Icons.location_on),
               lable: MyStrings.location,
               hint: MyStrings.hintLocation,
               controller: controller),

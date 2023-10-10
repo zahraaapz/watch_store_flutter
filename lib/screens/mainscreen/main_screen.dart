@@ -25,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
   final GlobalKey<NavigatorState> _homeKey = GlobalKey();
   final GlobalKey<NavigatorState> _basketKey = GlobalKey();
   final GlobalKey<NavigatorState> _profileKey = GlobalKey();
- List<int> _routeHistory = [BtmNavScreenIndex.home];
+ final List<int> _routeHistory = [BtmNavScreenIndex.home];
 
   late final map = {
     BtmNavScreenIndex.home: _homeKey,
