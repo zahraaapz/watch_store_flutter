@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:watch_store_flutter/gen/assets.gen.dart';
 
 import '../components/text_style.dart';
 import '../res/string.dart';
@@ -18,10 +20,12 @@ class RegisterationAppBar extends StatelessWidget implements PreferredSizeWidget
         preferredSize: Size(double.infinity, size.height * .1),
         child: Row(
           children: [
-            IconButton(onPressed: () {
-                                Navigator.pop(context);
-
-            }, icon: Icon(Icons.arrow_back)),
+        GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          
+          child: SvgPicture.asset(Assets.svg.back)),
             Text(
               MyStrings.register,
               style: MyStyles.title,
