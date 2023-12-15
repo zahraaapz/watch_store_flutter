@@ -15,6 +15,13 @@ static const TextStyle oldPrice =
        fontSize: 12,
         color: MyColors.oldPrice,
         decoration: TextDecoration.lineThrough);
+        
+static const TextStyle tagTitle =
+      TextStyle(
+        fontFamily: FontFamily.dana,
+       fontSize: 14,
+        color: Colors.white,
+        decoration: TextDecoration.lineThrough);
 
 
  static const TextStyle prodTimeStyle =

@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/res/color.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
+import 'package:watch_store_flutter/widget/product_item.dart';
 
 import '../gen/assets.gen.dart';
 
@@ -17,7 +18,7 @@ class ProductListScreen extends StatelessWidget {
           child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CartBadge(count:1),
+          CartBadge(count: 1),
           Row(
             children: [
               Text('پرفروش ترین ها'),
@@ -28,13 +29,8 @@ class ProductListScreen extends StatelessWidget {
           IconButton(onPressed: () {}, icon: SvgPicture.asset(Assets.svg.close))
         ],
       )),
-      body: Container(
-        color: Colors.white,
-        height: double.infinity,
-        width: double.infinity,
-        child: const Center(
-          child: Text('data'),
-        ),
+      body: Column(
+        children: [TagList(), ProductGridView()],
       ),
     ));
   }
@@ -99,6 +95,59 @@ class CartBadge extends StatelessWidget {
               ),
             ))
       ],
+    );
+  }
+}
+
+class TagList extends StatefulWidget {
+  const TagList({super.key});
+
+  @override
+  State<TagList> createState() => _TagListState();
+}
+
+class _TagListState extends State<TagList> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: MyDimens.medium),
+      child: SizedBox(
+        height: 24,
+        child: ListView.builder(
+          reverse: true,
+          itemCount: 6,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return Container(
+              decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(MyDimens.large)),
+              margin: const EdgeInsets.symmetric(horizontal: MyDimens.small),
+              padding: const EdgeInsets.symmetric(horizontal: MyDimens.small),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class ProductGridView extends StatelessWidget {
+  const ProductGridView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisSpacing: 2,
+            mainAxisSpacing: 2,
+            childAspectRatio: 0.7,
+            crossAxisCount: 2),
+        itemBuilder: (context, index) {
+          return productItem(productName: 'productName', price: 100);
+        },
+      ),
     );
   }
 }
