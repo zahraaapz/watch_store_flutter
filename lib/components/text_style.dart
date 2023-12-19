@@ -7,7 +7,27 @@ abstract class MyStyles {
 
   static const TextStyle btmNavActive =
       TextStyle(fontFamily: FontFamily.dana,
-       fontSize: 14, color: Colors.black);
+       fontSize: 14, color: Colors.black);  
+       
+       
+       static  TextStyle caption =
+      TextStyle(
+        fontWeight: FontWeight.normal,
+        fontFamily: FontFamily.dana,
+       fontSize: 13, color:MyColors.title.withAlpha(150));   
+       
+ static  TextStyle selectedTab =
+      TextStyle(
+        fontWeight: FontWeight.normal,
+        fontFamily: FontFamily.dana,
+       fontSize: 14, color:MyColors.title.withAlpha(150));    
+       
+       
+          static  TextStyle unselectedTab =
+      TextStyle(
+        fontWeight: FontWeight.normal,
+        fontFamily: FontFamily.dana,
+       fontSize: 14, color:MyColors.title.withAlpha(125));
 
 static const TextStyle oldPrice =
       TextStyle(
