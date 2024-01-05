@@ -26,7 +26,7 @@ class GetOtpScreen extends StatelessWidget {
            MyDimens.medium.height,
           Text(MyStrings.otpCodeSendFor.replaceAll(MyStrings.replace, '0615995'),style: MyStyles.title,),
            MyDimens.small.height,
-          Text(MyStrings.wrongNumberEditNumber,style: MyStyles.primaryThemeTextStyle),
+          const Text(MyStrings.wrongNumberEditNumber,style: MyStyles.primaryThemeTextStyle),
           MyDimens.large.height,
           AppTextField(
            prefixLable: '2:55',

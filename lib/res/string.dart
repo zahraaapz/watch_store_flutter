@@ -16,7 +16,9 @@ abstract class MyStrings{
   static const String nameLastName = "نام و نام خانوادگی";
   static const String homeNumber = "تلفن ثابت";
   static const String address = "آدرس";
+  static const String sendToAddress = "ارسال به آدرس";
   static const String postalCode = "کد پستی";
+  static const String lurem = " /////کد پستی";
   static const String location = "موقعیت مکانی";
   static const String hintNameLastName = "نام و نام خانوادگی خود را با حروف فارسی وارد کنید";
   static const String hintHomeNumber = "شماره تلفن ثابت را با پیش شماره وارد بفرمایید";

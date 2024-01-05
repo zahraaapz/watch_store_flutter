@@ -8,6 +8,7 @@ abstract class MyColors {
   static const Color oldPrice= Color.fromARGB(255, 191, 191, 191);
   static const Color unfocusedTextFiled = Color.fromARGB(255, 251, 251, 251);
   static const Color btmNavInActiveItem = Color.fromARGB(255, 196, 196, 196);
+  static const Color surfaceColor = Color.fromARGB(255, 243, 243, 243);
   static const Color shadow = Color.fromARGB(90, 0, 0, 0);
   static const Color appbar = Colors.white;
   static const Color borderColor = Colors.grey;
