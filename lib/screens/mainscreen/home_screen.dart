@@ -19,63 +19,59 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          searchBtn(
-            onTap: () {},
-          ),
-          AppSlider(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CatWidget(
-                  size: size,
-                  title: MyStrings.desktop,
-                  iconPath: Assets.svg.desktop,
-                  colors: MyColors.catDesktop,
-                  ontap: () {}),
-              CatWidget(
-                  size: size,
-                  title: MyStrings.digital,
-                  iconPath: Assets.svg.digital,
-                  colors: MyColors.catDigital,
-                  ontap: () {}),
-              CatWidget(
-                  size: size,
-                  title: MyStrings.smart,
-                  iconPath: Assets.svg.smart,
-                  colors: MyColors.catSmart,
-                  ontap: () {}),
-              CatWidget(
-                  size: size,
-                  title: MyStrings.classic,
-                  iconPath: Assets.svg.clasic,
-                  colors: MyColors.catClassic,
-                  ontap: () {}),
-            ],
-          ),
-          MyDimens.large.height,
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            reverse: true,
-            child: Row(
-              children: [
-                SizedBox(
-                  height: 300,
-                  child: ListView.builder(
-                      itemCount: 8,
-                      shrinkWrap: true,
-                      physics: ClampingScrollPhysics(),
-                      itemBuilder: (context, index) =>
-                       productItem(price: 50000, productName: 'ساعت مردانه',)),
-                ),
-                VerticalText()
-              ],
+    return Column(
+      children: [
+        searchBtn(
+          onTap: () {},
+        ),
+        AppSlider(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CatWidget(
+                size: size,
+                title: MyStrings.desktop,
+                iconPath: Assets.svg.desktop,
+                colors: MyColors.catDesktop,
+                ontap: () {}),
+            CatWidget(
+                size: size,
+                title: MyStrings.digital,
+                iconPath: Assets.svg.digital,
+                colors: MyColors.catDigital,
+                ontap: () {}),
+            CatWidget(
+                size: size,
+                title: MyStrings.smart,
+                iconPath: Assets.svg.smart,
+                colors: MyColors.catSmart,
+                ontap: () {}),
+            CatWidget(
+                size: size,
+                title: MyStrings.classic,
+                iconPath: Assets.svg.clasic,
+                colors: MyColors.catClassic,
+                ontap: () {}),
+          ],
+        ),
+        MyDimens.large.height,
+        Row(
+          children: [
+            SizedBox(
+              height: 197,
+              width:310 ,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                  itemCount: 8,
+                  shrinkWrap: true,
+                 // physics: ClampingScrollPhysics(),
+                  itemBuilder: (context, index) =>
+                   productItem(price: 50000, productName: 'ساعت مردانه',)),
             ),
-          )
-        ],
-      ),
+            VerticalText()
+          ],
+        )
+      ],
     );
   }
 }
@@ -84,7 +80,7 @@ class VerticalText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(5),
       child: RotatedBox(
         quarterTurns: -1,
         child: Column(

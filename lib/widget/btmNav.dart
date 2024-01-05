@@ -32,7 +32,7 @@ const BtmNavItem({
       onTap: onTap,
       child: Container(
       
-      height:size!.height/11,
+      height:size!.height/12,
       
       width: size!.width/4,
       

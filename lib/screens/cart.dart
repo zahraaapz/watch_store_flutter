@@ -24,60 +24,58 @@ class CartScreen extends StatelessWidget {
             style: MyStyles.title,
           ),
         )),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: MyDimens.medium),
-                padding: const EdgeInsets.all(MyDimens.medium),
-                width: double.infinity,
-                height: size.height * .1,
-                decoration: const BoxDecoration(color: Colors.white, boxShadow: [
-                  BoxShadow(
-                      color: Colors.black12,
-                      offset: Offset(0, 3),
-                      blurRadius: 3)
-                ]),
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      IconButton(
-                          onPressed: () {},
-                          icon: SvgPicture.asset(Assets.svg.leftArrow)),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              MyStrings.sendToAddress,
-                              style: MyStyles.caption,
-                            ),
-                            Text(
-                              MyStrings.lurem,
-                              style: MyStyles.caption,
-                            ),
-                          ],
-                        ),
-                      )
-                    ]),
-              ),
-              Expanded(child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return ShoppingCartItem(
-                    productTite: 'ساعت شیائومی mi Watch lite',
-                    price: 10000,
-                    oldprice: 500000,
-                  );
-                },
-              )),
-              Container(
-                height: 50,
-                width: double.infinity,
-                color: Colors.white,
-              )
-            ],
-          ),
+        body: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: MyDimens.medium),
+              padding: const EdgeInsets.all(MyDimens.medium),
+              width: double.infinity,
+              height: size.height * .1,
+              decoration: const BoxDecoration(color: Colors.white, boxShadow: [
+                BoxShadow(
+                    color: Colors.black12,
+                    offset: Offset(0, 3),
+                    blurRadius: 3)
+              ]),
+              child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset(Assets.svg.leftArrow)),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            MyStrings.sendToAddress,
+                            style: MyStyles.caption,
+                          ),
+                          Text(
+                            MyStrings.lurem,
+                            style: MyStyles.caption,
+                          ),
+                        ],
+                      ),
+                    )
+                  ]),
+            ),
+            Expanded(child: ListView.builder(
+              itemBuilder: (context, index) {
+                return ShoppingCartItem(
+                  productTite: 'ساعت شیائومی mi Watch lite',
+                  price: 10000,
+                  oldprice: 500000,
+                );
+              },
+            )),
+            Container(
+              height: 50,
+              width: double.infinity,
+              color: Colors.white,
+            )
+          ],
         ),
       ),
     );

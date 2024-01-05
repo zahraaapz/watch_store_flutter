@@ -48,69 +48,66 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
-    return WillPopScope(
-      onWillPop: onWillPop,
-      child: SafeArea(
-        child: Scaffold(
-          body: Stack(
-            children: [
-              Positioned(
-                  top: 0,
-                  bottom: size.height * .1,
-                  left: 0,
-                  right: 0,
-                  child: IndexedStack(index: selectedIndex, children: [
-                    Navigator(
-                      onGenerateRoute: (settings) =>
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
-                    ),
-                    Navigator(
-                      onGenerateRoute: (settings) => MaterialPageRoute(
-                          builder: (context) => BasketScreen()),
-                    ),
-                    Navigator(
-                      onGenerateRoute: (settings) => MaterialPageRoute(
-                          builder: (context) => ProfileScreen()),
-                    ),
-                  ])),
-              Positioned(
-                bottom: 0,
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
+          children: [
+            Positioned(
+                top: 0,
+                bottom: size.height * .1,
                 left: 0,
                 right: 0,
-                child: Container(
-                  color: Colors.white,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      BtmNavItem(
-                        size: size,
-                        onTap: () =>
-                            btmNavOnPressed(index: BtmNavScreenIndex.profile),
-                        iconPath: Assets.svg.user,
-                        isActive: selectedIndex == BtmNavScreenIndex.profile,
-                        text: "پروفایل",
-                      ),
-                      BtmNavItem(
-                        onTap: () =>
-                            btmNavOnPressed(index: BtmNavScreenIndex.basket),
-                        iconPath: Assets.svg.basket,
-                        isActive: selectedIndex == BtmNavScreenIndex.basket,
-                        text: "سبد خرید",
-                        size: size,
-                      ),
-                      BtmNavItem(
-                          onTap: () =>
-                              btmNavOnPressed(index: BtmNavScreenIndex.home),
-                          iconPath: Assets.svg.home,
-                          isActive: selectedIndex == BtmNavScreenIndex.home,
-                          text: 'خانه',
-                          size: size),
-                    ],
+                child: IndexedStack(index: selectedIndex, children: [
+                  Navigator(
+                    onGenerateRoute: (settings) =>
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
                   ),
+                  Navigator(
+                    onGenerateRoute: (settings) => MaterialPageRoute(
+                        builder: (context) => BasketScreen()),
+                  ),
+                  Navigator(
+                    onGenerateRoute: (settings) => MaterialPageRoute(
+                        builder: (context) => ProfileScreen()),
+                  ),
+                ])),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    BtmNavItem(
+                      size: size,
+                      onTap: () =>
+                          btmNavOnPressed(index: BtmNavScreenIndex.profile),
+                      iconPath: Assets.svg.user,
+                      isActive: selectedIndex == BtmNavScreenIndex.profile,
+                      text: "پروفایل",
+                    ),
+                    BtmNavItem(
+                      onTap: () =>
+                          btmNavOnPressed(index: BtmNavScreenIndex.basket),
+                      iconPath: Assets.svg.basket,
+                      isActive: selectedIndex == BtmNavScreenIndex.basket,
+                      text: "سبد خرید",
+                      size: size,
+                    ),
+                    BtmNavItem(
+                        onTap: () =>
+                            btmNavOnPressed(index: BtmNavScreenIndex.home),
+                        iconPath: Assets.svg.home,
+                        isActive: selectedIndex == BtmNavScreenIndex.home,
+                        text: 'خانه',
+                        size: size),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -24,16 +24,12 @@ final int time;
 
 
 
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
-         margin: const EdgeInsets.all(MyDimens.medium),
-        
-         width: 200,
+         margin: const EdgeInsets.all(4),
+         
+         width: 190,
          decoration: const BoxDecoration(
              gradient: LinearGradient(
                  begin: Alignment.topCenter,

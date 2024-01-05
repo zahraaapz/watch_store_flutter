@@ -23,6 +23,7 @@ class _TagListState extends State<TagList> {
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return Container(
+              width: 50,
               decoration: BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(MyDimens.large)),

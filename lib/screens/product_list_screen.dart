@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
-import 'package:watch_store_flutter/widget/product_item.dart';
 
 import '../gen/assets.gen.dart';
 import '../widget/Gridview_list.dart';
