@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:watch_store_flutter/screens/mainscreen/bascket_screen.dart';
 import 'package:watch_store_flutter/screens/mainscreen/home_screen.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../widget/btmNav.dart';
+import 'cart_screen.dart';
 import 'profile_screen.dart';
 
 class BtmNavScreenIndex {
@@ -64,7 +64,7 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   Navigator(
                     onGenerateRoute: (settings) => MaterialPageRoute(
-                        builder: (context) => BasketScreen()),
+                        builder: (context) => CartScreen()),
                   ),
                   Navigator(
                     onGenerateRoute: (settings) => MaterialPageRoute(

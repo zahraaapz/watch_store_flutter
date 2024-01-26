@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:watch_store_flutter/components/theme.dart';
-import 'package:watch_store_flutter/routes/names.dart';
+import 'package:watch_store_flutter/screens/product_list_screen.dart';
 
-import 'package:watch_store_flutter/screens/mainscreen/main_screen.dart';
+import 'components/theme.dart';
+
 
 
 void main() {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: LightTheme(),
       // initialRoute:Screens.root ,
       // routes:routes 
-      home: MainScreen()
+      home:ProductListScreen()
     ,
 
     );

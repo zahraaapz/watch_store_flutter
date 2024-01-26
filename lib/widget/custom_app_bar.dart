@@ -13,6 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
       child: Container(
         height: preferredSize.height,
         decoration: const BoxDecoration(
+          color:MyColors.appbar,
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(MyDimens.small),
                 bottomRight: Radius.circular(MyDimens.medium)),

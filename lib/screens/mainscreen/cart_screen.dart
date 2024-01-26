@@ -5,8 +5,8 @@ import 'package:watch_store_flutter/res/color.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
 import 'package:watch_store_flutter/res/string.dart';
 import 'package:watch_store_flutter/widget/custom_app_bar.dart';
-import '../gen/assets.gen.dart';
-import '../widget/shoppingCartItem.dart';
+import '../../gen/assets.gen.dart';
+import '../../widget/shoppingCartItem.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});

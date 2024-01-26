@@ -5,7 +5,7 @@ import 'package:watch_store_flutter/components/text_style.dart';
 
 import '../gen/assets.gen.dart';
 import '../res/color.dart';
-import '../screens/cart.dart';
+import '../screens/mainscreen/cart_screen.dart';
 
 class ShoppingCartItem extends StatelessWidget {
   ShoppingCartItem({super.key,required this.oldprice,required this.price,required this.productTite});
