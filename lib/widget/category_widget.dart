@@ -8,8 +8,8 @@ import '../components/text_style.dart';
 import '../res/dimens.dart';
 
 
-class CatWidget extends StatelessWidget {
-  const CatWidget({
+class CategoryWidget extends StatelessWidget {
+  const CategoryWidget({
     super.key,
     required this.size,
     required this.title,

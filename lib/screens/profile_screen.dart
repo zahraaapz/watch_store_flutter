@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/components/text_style.dart';
 import 'package:watch_store_flutter/res/color.dart';
@@ -7,8 +6,10 @@ import 'package:watch_store_flutter/res/dimens.dart';
 import 'package:watch_store_flutter/res/string.dart';
 import 'package:watch_store_flutter/screens/mainscreen/cart_screen.dart';
 import 'package:watch_store_flutter/widget/custom_app_bar.dart';
+import '../gen/assets.gen.dart';
+import '../widget/cart_screen.dart';
 
-import 'gen/assets.gen.dart';
+
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -89,31 +90,4 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
-class ProfileItem extends StatelessWidget {
-  const ProfileItem({super.key, required this.title, required this.svgIcon});
-  final svgIcon;
-  final title;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: MyDimens.small),
-      child: Align(
-        alignment: Alignment.centerRight,
-        child: Row(
-          children: [
-            Expanded(
-                child: Text(
-              title,
-              style: MyStyles.title,
-              softWrap: true,
-              maxLines: 2,
-              textAlign: TextAlign.right,
-            )),
-            MyDimens.small.width,
-            SvgPicture.asset(svgIcon)
-          ],
-        ),
-      ),
-    );
-  }
-}
+

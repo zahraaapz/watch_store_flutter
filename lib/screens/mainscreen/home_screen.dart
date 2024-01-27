@@ -7,7 +7,7 @@ import 'package:watch_store_flutter/gen/assets.gen.dart';
 import 'package:watch_store_flutter/res/color.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
 import 'package:watch_store_flutter/res/string.dart';
-import 'package:watch_store_flutter/widget/cat_widget.dart';
+import 'package:watch_store_flutter/widget/category_widget.dart';
 
 import '../../widget/app_slider.dart';
 import '../../widget/product_item.dart';
@@ -28,25 +28,25 @@ class HomeScreen extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CatWidget(
+            CategoryWidget(
                 size: size,
                 title: MyStrings.desktop,
                 iconPath: Assets.svg.desktop,
                 colors: MyColors.catDesktop,
                 ontap: () {}),
-            CatWidget(
+            CategoryWidget(
                 size: size,
                 title: MyStrings.digital,
                 iconPath: Assets.svg.digital,
                 colors: MyColors.catDigital,
                 ontap: () {}),
-            CatWidget(
+            CategoryWidget(
                 size: size,
                 title: MyStrings.smart,
                 iconPath: Assets.svg.smart,
                 colors: MyColors.catSmart,
                 ontap: () {}),
-            CatWidget(
+            CategoryWidget(
                 size: size,
                 title: MyStrings.classic,
                 iconPath: Assets.svg.clasic,
