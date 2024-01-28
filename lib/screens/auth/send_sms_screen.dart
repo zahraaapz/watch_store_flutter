@@ -4,11 +4,11 @@ import 'package:watch_store_flutter/res/dimens.dart';
 import 'package:watch_store_flutter/routes/names.dart';
 import 'package:watch_store_flutter/widget/app_text_field.dart';
 import 'package:watch_store_flutter/widget/main_button.dart';
-import '../gen/assets.gen.dart';
-import '../res/string.dart';
+import '../../gen/assets.gen.dart';
+import '../../res/string.dart';
 
-class SendOtpScreen extends StatelessWidget {
-  SendOtpScreen({super.key});
+class SendSmsScreen extends StatelessWidget {
+  SendSmsScreen({super.key});
  final TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class SendOtpScreen extends StatelessWidget {
                 hint: MyStrings.hintPhoneNumber,
                 controller: controller),
                 MainButton(text: MyStrings.next, onPressed: (){
-                  Navigator.pushNamed(context, Screens.getOtpScreen);
+                  Navigator.pushNamed(context, Screens.verifyCodeScreen);
                 })
           ],
         ),

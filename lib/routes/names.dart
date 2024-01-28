@@ -3,8 +3,8 @@
   class Screens{
     Screens._();
   static const root = "/";
-  static const getOtpScreen = "/getOtpScreen";
-  static const sendOtpScreen = "/sendOtpScreen";
+  static const verifyCodeScreen = "/verifyCodeScreen";
+  static const sendSmsScreen = "/sendSmsScreen";
   static const registerUserScreen = "/registerUserScreen";
   static const mainScreen = "/mainScreen";
   static const productListScreen = "/productListScreen";

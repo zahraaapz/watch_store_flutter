@@ -40,17 +40,17 @@ class ProfileScreen extends StatelessWidget {
                     child: Image.asset(Assets.png.avatar.path),
                   ),
                   MyDimens.medium.height,
-                  Text(
+                  const Text(
                     'ساسان صفری',
                     style: MyStyles.avatarText,
                   ),
-                  Align(
+                  const Align(
                       alignment: Alignment.centerRight,
                       child: Text(
                         MyStrings.activeAddress,
                         style: MyStyles.title,
                       )),
-                  Align(
+                  const Align(
                       alignment: Alignment.centerRight,
                       child: Row(
                         children: [
