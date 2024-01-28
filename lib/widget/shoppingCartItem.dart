@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/components/text_style.dart';
+import 'package:watch_store_flutter/widget/surface_container.dart';
 
 import '../gen/assets.gen.dart';
 import '../res/color.dart';
-import '../screens/mainscreen/cart_screen.dart';
 
 class ShoppingCartItem extends StatelessWidget {
   ShoppingCartItem({super.key,required this.oldprice,required this.price,required this.productTite});

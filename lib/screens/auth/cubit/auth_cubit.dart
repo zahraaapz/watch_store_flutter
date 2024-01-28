@@ -18,7 +18,7 @@ class AuthCubit extends Cubit<AuthState> {
       await Dio()
           .post(EndPoints.sendSms, data: {'mobile': mobile}).then((value) {
         if (value.statusCode == 201) {
-          emit(SentState());
+          emit(SentState(mobile: mobile));
         } else {
           emit(ErrorState());
         }
