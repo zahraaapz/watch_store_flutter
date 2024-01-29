@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/button_style.dart';
+import 'package:watch_store_flutter/components/text_style.dart';
 
 class MainButton extends StatelessWidget{
   final  void Function() onPressed;
@@ -14,8 +15,8 @@ width: size.width*.7,
 height: size.height*.075,
 child: ElevatedButton(
   style: AppButtonStyle.mainButtonStyle,
-  onPressed: onPressed, child: Text(text)),
-);
+  onPressed: onPressed, child: Text(text,style: MyStyles.mainButton),
+));
   }
 
 }

@@ -3,12 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:watch_store_flutter/screens/auth/cubit/auth_cubit.dart';
 import 'package:watch_store_flutter/screens/auth/send_sms_screen.dart';
 import 'package:watch_store_flutter/screens/mainscreen/main_screen.dart';
-
+import 'package:watch_store_flutter/utils/shared_preference.dart';
 import 'components/theme.dart';
 import 'routes/routes.dart';
 
-void main() {
+void main()async {
   runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPreferencesManager().init();
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -33,8 +36,9 @@ class MyApp extends StatelessWidget {
               return MainScreen();
             } else if (state is LoggedOutState) {
               return SendSmsScreen();
-            } else {
-              return SendSmsScreen();
+            }
+            else{
+               return SendSmsScreen();
             }
           },
         ),

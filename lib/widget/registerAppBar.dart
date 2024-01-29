@@ -17,18 +17,18 @@ class RegisterationAppBar extends StatelessWidget implements PreferredSizeWidget
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
-        preferredSize: Size(double.infinity, size.height * .1),
-        child: Row(
+        preferredSize: Size(double.infinity, size.height * .9),
+        child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,
           children: [
         GestureDetector(
           onTap: () {
             Navigator.pop(context);
           },
           
-          child: SvgPicture.asset(Assets.svg.back)),
+          child: SvgPicture.asset(Assets.svg.back,height: 30,)),
             Text(
               MyStrings.register,
-              style: MyStyles.title,
+              style: MyStyles.title.copyWith(fontSize: 20),
             )
           ],
         ));

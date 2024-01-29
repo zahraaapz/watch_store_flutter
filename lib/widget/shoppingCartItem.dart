@@ -16,11 +16,12 @@ class ShoppingCartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SurfaceContainer(
-      child: Row(
+      child: Row(crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Expanded(
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
                 
@@ -42,8 +43,7 @@ class ShoppingCartItem extends StatelessWidget {
           )),
           Row(
             children: [
-              IconButton(
-                  onPressed: () {}, icon: SvgPicture.asset(Assets.svg.delete)),
+      
               IconButton(
                   onPressed: () {}, icon: SvgPicture.asset(Assets.svg.minus)),
               Text('عدد $count'),
