@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/components/text_style.dart';
@@ -20,6 +19,7 @@ class VerifyCodeScreen extends StatefulWidget {
 }
 
 class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
+
  final TextEditingController controller = TextEditingController();
 
 late Timer timer;
@@ -53,16 +53,12 @@ setState(() {
 @override
   void initState() {
 
-    super.initState();
+super.initState();
 startTimer();
+
   }
 
-@override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    timer.cancel();
-  }
+
 
 
   @override
@@ -92,7 +88,7 @@ startTimer();
 
               BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
-               
+               timer.cancel();
                   if (state is VerifiedIsRegisterState) {
                      Navigator.pushNamed(context, Screens.mainScreen);
                   } else if (state is VerifiedNotRegisterState) {
