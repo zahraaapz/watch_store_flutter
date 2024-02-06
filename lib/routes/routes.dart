@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/routes/names.dart';
 import 'package:watch_store_flutter/screens/product_list_screen.dart';
 import 'package:watch_store_flutter/screens/product_single_screen.dart';
-import 'package:watch_store_flutter/screens/register_screen%20.dart';
+import 'package:watch_store_flutter/screens/register/register_screen%20.dart';
 import '../screens/auth/send_sms_screen.dart';
 
 import '../screens/auth/verify_code_screen.dart';

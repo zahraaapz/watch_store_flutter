@@ -1,17 +1,21 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:watch_store_flutter/components/button_style.dart';
 import 'package:watch_store_flutter/components/extention.dart';
+import 'package:watch_store_flutter/data/model/model.dart';
 import 'package:watch_store_flutter/res/color.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
 import 'package:watch_store_flutter/routes/names.dart';
+import 'package:watch_store_flutter/screens/register/cubit/register_cubit.dart';
 import 'package:watch_store_flutter/utils/image_handler.dart';
 import 'package:watch_store_flutter/widget/avatar.dart';
 import 'package:watch_store_flutter/widget/main_button.dart';
-import '../components/text_style.dart';
-import '../res/string.dart';
-import '../widget/app_text_field.dart';
-import '../widget/registerAppBar.dart';
+import '../../components/text_style.dart';
+import '../../res/string.dart';
+import '../../widget/app_text_field.dart';
+import '../../widget/registerAppBar.dart';
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({super.key});
@@ -21,9 +25,15 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final TextEditingController controller = TextEditingController();
-  int _selectedValue = 0;
+  final TextEditingController controllerLocation = TextEditingController();
+  final TextEditingController controllerLastName = TextEditingController();
+  final TextEditingController controllerPhone = TextEditingController();
+  final TextEditingController controllerAddress = TextEditingController();
+  final TextEditingController controllerPostalCode = TextEditingController();
   ImageHandler imageHandler = ImageHandler();
+
+  double lat = 0;
+  double lng = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +42,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Scaffold(
       appBar: RegisterationAppBar(size: size),
       body: SingleChildScrollView(
-        child: SizedBox(
-          width: double.infinity,
+        child: BlocProvider(
+          create: (context) => RegisterCubit(),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             MyDimens.medium.height,
@@ -105,29 +115,76 @@ class _RegisterScreenState extends State<RegisterScreen> {
             AppTextField(
                 lable: MyStrings.nameLastName,
                 hint: MyStrings.hintNameLastName,
-                controller: controller),
+                controller: controllerLocation),
             AppTextField(
                 lable: MyStrings.homeNumber,
                 hint: MyStrings.hintHomeNumber,
-                controller: controller),
+                controller: controllerLocation),
             AppTextField(
                 lable: MyStrings.address,
                 hint: MyStrings.hintAddress,
-                controller: controller),
+                controller: controllerLocation),
             AppTextField(
                 lable: MyStrings.postalCode,
                 hint: MyStrings.hintPostalCode,
-                controller: controller),
-            AppTextField(
-                icon: const Icon(Icons.location_on),
-                lable: MyStrings.location,
-                hint: MyStrings.hintLocation,
-                controller: controller),
-            MainButton(
-                text: MyStrings.next,
-                onPressed: () {
+                controller: controllerLocation),
+            BlocConsumer<RegisterCubit, RegisterState>(
+              listener: (context, state) {
+                if (state is LocationPickedState) {
+                  if (state.location != null) {
+                    controllerLocation.text =
+                        '${state.location!.longitude} + ${state.location!.latitude}';
+                    lat = state.location!.latitude;
+                    lng = state.location!.longitude;
+                  }
+                }
+              },
+              builder: (context, state) {
+                return GestureDetector(
+                  onTap: () {
+                    BlocProvider.of<RegisterCubit>(context)
+                        .pickTheLocation(context: context);
+                  },
+                  child: AppTextField(
+                      icon: const Icon(Icons.location_on),
+                      lable: MyStrings.location,
+                      hint: MyStrings.hintLocation,
+                      controller: controllerLocation),
+                );
+              },
+            ),
+            BlocConsumer<RegisterCubit, RegisterState>(
+              listener: (context, state) {
+                if (state is OkResponsestate) {
                   Navigator.pushNamed(context, Screens.mainScreen);
-                }),
+                } else if (state is ErrorState) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text('خطا')));
+                }
+              },
+              builder: (context, state) {
+                if (state is LoadingState) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return MainButton(
+                      text: MyStrings.next,
+                      onPressed: () async {
+                        User user = User(
+                            name:controllerLastName.text,
+                            phone: controllerPhone.text,
+                            postalCode: controllerPostalCode.text,
+                            address: controllerAddress.text,
+                            image:await MultipartFile.fromFile(imageHandler.getImage!.path),
+                            lat: lat,
+                            lng: lng);
+
+                            BlocProvider.of<RegisterCubit>(context).register(user:user);
+                      });
+                }
+              },
+            ),
             MyDimens.small.height
           ]),
         ),
