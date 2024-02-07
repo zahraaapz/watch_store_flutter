@@ -57,7 +57,7 @@ try {
 
 
 
-  Future<void> pickAndCropImage({required ImageSource source}) async {
+Future<void> pickAndCropImage({required ImageSource source}) async {
    File _image;
     try {
       final image = await ImagePicker().pickImage(source: source);
