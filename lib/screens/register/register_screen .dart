@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:watch_store_flutter/components/button_style.dart';
 import 'package:watch_store_flutter/components/extention.dart';
@@ -17,6 +16,7 @@ import '../../components/text_style.dart';
 import '../../res/string.dart';
 import '../../widget/app_text_field.dart';
 import '../../widget/registerAppBar.dart';
+import 'package:dio/dio.dart';
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({super.key});
@@ -150,25 +150,41 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
     ));
   }
+//////////////not work
+  // Future<String> getAddress(double lng, double lat) async {
+  //   String address = '';
+  //   try {
+  //     await placemarkFromCoordinates(lat, lng, localeIdentifier: 'fa')
+  //         .then((value) {
+  //       Placemark first = value.first;
+
+  //       address = '${first.street}' '${first.locality}' '${first.country}';
+  //     });
+  //     print(lat.toString());
+  //     print(lng.toString());
+  //     return address;
+  //   } catch (e) {
+  //     return 'آدرس یافت نشد';
+  //   }
+  // }
 
   Future<String> getAddress(double lng, double lat) async {
-    String address = '';
-    try {
-      await placemarkFromCoordinates(lat, lng, localeIdentifier: 'fa')
-          .then((value) {
-        Placemark first = value.first;
 
-        address = '${first.street}' '${first.locality}' '${first.country}';
-      });
-      print(lat.toString());
-      print(lng.toString());
-      return address;
-    } catch (e) {
-      return 'آدرس یافت نشد';
-    }
+    String add = '';
+    await Dio()
+        .get("https://api.neshan.org/v5/reverse?lat=$lat&lng=$lng",
+            options: Options(headers: {
+              "Api-Key":'service.b25fe0490cb348ca8fab44bb75b2481a'
+            }))
+        .then((val) {
+                print(val.toString());
+                add=val.data['formatted_address'];
+        });
+
+    return add;
   }
 
-  Future<dynamic> galleryOrcamera(
+Future<dynamic> galleryOrcamera(
       BuildContext context, Size size, BuildContext contxt) {
     return showModalBottomSheet(
       context: context,

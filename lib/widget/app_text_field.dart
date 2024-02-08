@@ -17,7 +17,7 @@ const AppTextField({
   required this.lable,
   required this.hint,
   required this.controller,
-  this.icon=const SizedBox(),
+  this.icon=const SizedBox.shrink(),
   this.prefixLable='',
   this.textAlign=TextAlign.center,
 this.inputType,
@@ -51,6 +51,7 @@ textAlign: textAlign,
 controller: controller,
 keyboardType: inputType,
 decoration: InputDecoration(
+  prefixIcon: icon,
   hintText: hint,
   hintStyle:  MyStyles.hint
 ),

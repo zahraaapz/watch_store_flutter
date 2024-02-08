@@ -25,7 +25,7 @@ pickTheLocation({required context})async{
       textCancelPicker:"لغو",
       textConfirmPicker:'انتخاب',
       zoomOption:ZoomOption(initZoom:8),
-      initPosition:GeoPoint(latitude:45.555,longitude:55.55),
+      initPosition:GeoPoint(latitude:35.778258,longitude:51.459157),
       radius:8,
       context:context).then((val){
         emit(LocationPickedState(location: val));
@@ -41,7 +41,7 @@ emit(LoadingState());
 try {
   String? token=SharedPreferencesManager().getString(SharedPreferencesConstants.token);
   dio.options.headers['Authorization']='Bearer $token';
-  await dio.patch(EndPoints.register,
+  await dio.post(EndPoints.register,
   data:FormData.fromMap(user.toMap())).then((value) {
     if (value.statusCode==201) {
       emit(OkResponsestate());
