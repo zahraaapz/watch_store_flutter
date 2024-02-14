@@ -17,7 +17,7 @@ class AuthCubit extends Cubit<AuthState> {
 
     try {
       await Dio()
-          .post(EndPoints.sendSms, data: {'mobile': mobile}).then((value) {
+          .post(Endpoints.sendSms, data: {'mobile': mobile}).then((value) {
         if (value.statusCode == 201) {
             print(value.toString());
           emit(SentState(mobile: mobile));
@@ -34,7 +34,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(LoadingState());
 
     try {
-      await Dio().post(EndPoints.checkSms,
+      await Dio().post(Endpoints.checkSmsCode,
           data: {'mobile': mobile, 'code': code}).then((value) {
         if (value.statusCode == 201) {
             print(value.toString());

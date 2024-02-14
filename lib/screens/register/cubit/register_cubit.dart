@@ -40,7 +40,7 @@ emit(LoadingState());
 try {
   String? token=SharedPreferencesManager().getString(SharedPreferencesConstants.token);
   dio.options.headers['Authorization']='Bearer $token';
-  await dio.post(EndPoints.register,
+  await dio.post(Endpoints.register,
   data:FormData.fromMap(user.toMap())).then((value) {
     if (value.statusCode==201) {
       emit(OkResponsestate());
