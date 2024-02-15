@@ -5,14 +5,14 @@ import '../../utils/response_validator.dart';
 import '../model/product.dart';
 
 
-abstract class ProductDataSrc {
+abstract class IProductDataSrc {
   Future<List<Product>> getAllByCategory(int id);
   Future<List<Product>> getAllByBrand(int id);
   Future<List<Product>> getSorted(String routeParam);
   Future<List<Product>> searchProducts(String searchKey);
 }
 
-class ProductRemoteDataSrc implements ProductDataSrc {
+class ProductRemoteDataSrc implements IProductDataSrc {
   final Dio httpClient;
 
   ProductRemoteDataSrc(this.httpClient);
