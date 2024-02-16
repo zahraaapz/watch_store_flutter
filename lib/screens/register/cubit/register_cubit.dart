@@ -5,7 +5,7 @@ import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
-import 'package:watch_store_flutter/data/src/constant.dart';
+import 'package:watch_store_flutter/data/constant.dart';
 import 'package:watch_store_flutter/utils/shared_pref_constant.dart';
 import 'package:watch_store_flutter/utils/shared_preference.dart';
 import '../../../data/model/model.dart';

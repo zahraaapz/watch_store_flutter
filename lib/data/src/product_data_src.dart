@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:watch_store_flutter/data/src/constant.dart';
+import 'package:watch_store_flutter/data/constant.dart';
 import '../../utils/response_validator.dart';
 import '../model/product.dart';
 

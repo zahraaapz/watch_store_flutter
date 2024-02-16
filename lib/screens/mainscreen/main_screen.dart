@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:watch_store_flutter/screens/mainscreen/home_screen.dart';
+import 'package:watch_store_flutter/screens/home/home_screen.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../widget/btmNav.dart';

@@ -3,36 +3,23 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
 
+import '../data/model/slide.dart';
+
 class AppSlider extends StatefulWidget {
   AppSlider({
-    super.key,
+    super.key, required this.imgList,
   });
-
+final List<Slide> imgList;
   @override
   State<AppSlider> createState() => _AppSliderState();
 }
 
 class _AppSliderState extends State<AppSlider> {
   int _current=0;
-  List<String> imgList = [
-    'https://ticktackgallery.com/media/wysiwyg/ticktackbanner/men.png',
-    'https://ticktackgallery.com/media/wysiwyg/ticktackbanner/men.png',
-    'https://ticktackgallery.com/media/wysiwyg/ticktackbanner/women.png',
-    'https://ticktackgallery.com/media/wysiwyg/ticktackbanner/women.png',
-  ];
 
   final CarouselController _controller = CarouselController();
 
-  late final List<Widget> items = imgList
-      .map((e) => Padding(
-          padding: EdgeInsets.all(MyDimens.large),
-          child: ClipRRect(
-              borderRadius: BorderRadius.circular(MyDimens.medium),
-              child: Image.network(
-                e,
-                fit: BoxFit.cover,
-              ))))
-      .toList();
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +31,8 @@ class _AppSliderState extends State<AppSlider> {
           width: double.infinity,
           child: CarouselSlider(
             carouselController: _controller,
-              items: items,
+              items: widget.imgList.map((e) => Padding(padding: const EdgeInsets.all(MyDimens.medium),
+              child: ClipRRect(borderRadius:BorderRadius.circular(MyDimens.medium),child: Image.network(e.image,fit: BoxFit.cover,), ),)).toList(),
               options: CarouselOptions(
                 autoPlay: true,
                 onPageChanged: (index, reason) {
@@ -55,7 +43,7 @@ class _AppSliderState extends State<AppSlider> {
               )),
         ),
         Row(mainAxisAlignment: MainAxisAlignment.center,
-          children: imgList.asMap().entries
+          children: widget.imgList.asMap().entries
               .map((e) => Padding(
                 padding: const EdgeInsets.all(MyDimens.small),
                 child: GestureDetector(
