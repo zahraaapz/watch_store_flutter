@@ -13,6 +13,7 @@ class HomeRepository implements IHomeRepo{
   final IHomeDataSrc homeDataSrc;
 
   HomeRepository(this.homeDataSrc);
+  
   @override
   Future<Home> getHome()=>homeDataSrc.getHome();
 

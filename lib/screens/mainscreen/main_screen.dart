@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/screens/home/home_screen.dart';
 
+import '../../data/product_repo_test.dart';
 import '../../gen/assets.gen.dart';
 import '../../widget/btmNav.dart';
 import 'cart_screen.dart';
@@ -43,6 +44,13 @@ class _MainScreenState extends State<MainScreen> {
       });
     }
     return false;
+  }
+
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ProductRepoTest().getProduct();
   }
 
   @override

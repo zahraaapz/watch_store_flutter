@@ -16,7 +16,6 @@ import '../../components/text_style.dart';
 import '../../res/string.dart';
 import '../../widget/app_text_field.dart';
 import '../../widget/registerAppBar.dart';
-import 'package:dio/dio.dart';
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({super.key});
