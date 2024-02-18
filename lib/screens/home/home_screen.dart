@@ -27,81 +27,85 @@ class HomeScreen extends StatelessWidget {
         homeBloc.add(HomeInit());
         return homeBloc;
       },
-      child: SingleChildScrollView(
-        child: Scaffold(
-            body: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
-          if (state is LoadingState) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (state is HomeLoaded) {
-            return Column(
-              children: [
-                searchBtn(
-                  onTap: () {},
-                ),
-                AppSlider(
-                  imgList: state.home.sliders,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CategoryWidget(
-                        size: size,
-                        title: MyStrings.desktop,
-                        iconPath: Assets.svg.desktop,
-                        colors: MyColors.catDesktop,
-                        ontap: () {}),
-                    CategoryWidget(
-                        size: size,
-                        title: MyStrings.digital,
-                        iconPath: Assets.svg.digital,
-                        colors: MyColors.catDigital,
-                        ontap: () {}),
-                    CategoryWidget(
-                        size: size,
-                        title: MyStrings.smart,
-                        iconPath: Assets.svg.smart,
-                        colors: MyColors.catSmart,
-                        ontap: () {}),
-                    CategoryWidget(
-                        size: size,
-                        title: MyStrings.classic,
-                        iconPath: Assets.svg.clasic,
-                        colors: MyColors.catClassic,
-                        ontap: () {}),
-                  ],
-                ),
-                MyDimens.large.height,
-                Row(
-                  children: [
-                    SizedBox(
-                      height: 197,
-                      width: 310,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: state.home.amazingProducts.length,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) => productItem(
-                                price: state.home.amazingProducts[index].price,
-                                productName:
-                                    state.home.amazingProducts[index].title,
-                                time: 10,
-                                discount:
-                                    state.home.amazingProducts[index].discount,
-                              )),
-                    ),
-                    VerticalText()
-                  ],
-                )
-              ],
-            );
-          } else if (state is HomeError) {
-            return Center(child: Text('error'));
-          } else {
-            throw Exception('invalid state');
-          }
-        })),
+      child: SafeArea(
+        child: Scaffold(body: SingleChildScrollView(
+          child: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
+            if (state is HomeLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is HomeLoaded) {
+              return Column(
+                children: [
+                  searchBtn(
+                    onTap: () {},
+                  ),
+                  AppSlider(
+                    imgList: state.home.sliders,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CategoryWidget(
+                          size: size,
+                          title: MyStrings.desktop,
+                          iconPath: Assets.svg.desktop,
+                          colors: MyColors.catDesktop,
+                          ontap: () {}),
+                      CategoryWidget(
+                          size: size,
+                          title: MyStrings.digital,
+                          iconPath: Assets.svg.digital,
+                          colors: MyColors.catDigital,
+                          ontap: () {}),
+                      CategoryWidget(
+                          size: size,
+                          title: MyStrings.smart,
+                          iconPath: Assets.svg.smart,
+                          colors: MyColors.catSmart,
+                          ontap: () {}),
+                      CategoryWidget(
+                          size: size,
+                          title: MyStrings.classic,
+                          iconPath: Assets.svg.clasic,
+                          colors: MyColors.catClassic,
+                          ontap: () {}),
+                    ],
+                  ),
+                  MyDimens.medium.height,
+                  Row(
+                    children: [
+                      SizedBox(
+                        height:255,
+                        width: 310,
+                        child: ListView.builder(
+                          
+                            scrollDirection: Axis.horizontal,
+                            itemCount: state.home.amazingProducts.length,
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) => productItem(
+                              imagePath:state.home.amazingProducts[index].image ,
+                                  price:
+                                      state.home.amazingProducts[index].price,
+                                  productName:
+                                      state.home.amazingProducts[index].title,
+                                  time: 10,
+                                  discount: state
+                                      .home.amazingProducts[index].discount,
+                                )),
+                      ),
+                      VerticalText()
+                    ],
+                  )
+                ],
+              );
+            } else if (state is HomeError) {
+              return const Center(child: Text('error'));
+            } else {
+              throw Exception('invalid state');
+            }
+          }),
+        )),
       ),
     );
   }

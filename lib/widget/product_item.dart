@@ -10,6 +10,7 @@ class productItem extends StatelessWidget {
     super.key,
     required this.productName,
     required this.price,
+    required this.imagePath,
     this.time=0,
     this.discount=0,
     this.oldPrice=0,
@@ -21,13 +22,16 @@ final int price;
 final int oldPrice;
 final int discount;
 final int time;
+final imagePath;
 
 
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(8),
          width: 190,
+        
          decoration: const BoxDecoration(
              gradient: LinearGradient(
                  begin: Alignment.topCenter,
@@ -35,7 +39,7 @@ final int time;
                  colors: MyColors.productBgGradiant)),
          child: Column(
            children: [
-             Image.asset(Assets.png.unnamed.path),
+             Image.network(imagePath,scale:2.4,),
              Align(
                alignment: Alignment.centerRight,
                child: Text(

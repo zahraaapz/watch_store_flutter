@@ -15,8 +15,8 @@ class HomeRepository implements IHomeRepo{
   HomeRepository(this.homeDataSrc);
   
   @override
-  Future<Home> getHome()=>homeDataSrc.getHome();
+  Future<Home> getHome()=>  homeDataSrc.getHome();
 
 }
 
-final homeRepository=HomeRepository(HomeRemoteDataSrc(Dio()));
+ final homeRepository=HomeRepository(HomeRemoteDataSrc(Dio()));

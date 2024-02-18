@@ -18,6 +18,7 @@ class HomeRemoteDataSrc implements IHomeDataSrc {
     final Home home;
     final response = await httpClient.get(Endpoints.home);
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
+    
     home = Home.fromJson(response.data['data']);
     return home;
   }

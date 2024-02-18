@@ -11,6 +11,8 @@ class Slide {
 
   factory Slide.fromJson(Map<String, dynamic> elemnt) {
     return Slide(
-        id: elemnt['id'], title: elemnt['title'], image: elemnt['image']);
+        id: elemnt['id'] as int,
+        title: elemnt['title'] as String,
+        image: elemnt['image'] as String);
   }
 }

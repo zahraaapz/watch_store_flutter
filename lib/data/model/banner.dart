@@ -25,11 +25,11 @@ class Banner {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['image'] = this.image;
-    data['created_at'] = this.createdAt.toIso8601String();
-    data['updated_at'] = this.updatedAt.toIso8601String();
+    data['id'] = id;
+    data['title'] = title;
+    data['image'] = image;
+    data['created_at'] =createdAt.toIso8601String();
+    data['updated_at'] =updatedAt.toIso8601String();
     return data;
   }
 }

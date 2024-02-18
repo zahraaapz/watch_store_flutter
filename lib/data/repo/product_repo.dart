@@ -16,7 +16,7 @@ abstract class IProductRepo {
 class ProductRepository implements IProductRepo{
 
  final IProductDataSrc  iProductDataSrc;
-ProductRepository(this.iProductDataSrc);
+ ProductRepository(this.iProductDataSrc);
   
 
 

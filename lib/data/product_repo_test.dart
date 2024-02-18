@@ -5,5 +5,5 @@ import 'package:watch_store_flutter/data/src/product_data_src.dart';
 
 class ProductRepoTest{
   final product=ProductRepository(ProductRemoteDataSrc(Dio()));
-  getProduct()async=>await product.getSorted(ProductSortRoutes.newestProducts);
+  getProduct() async=> await product.getSorted(ProductSortRoutes.newestProducts);
 }

@@ -11,20 +11,18 @@ class Categories {
 
   factory Categories.fromJson(Map<String, dynamic> elemnt) {
     return Categories(
-        id: elemnt['id'], title: elemnt['title'], image: elemnt['image']);
+        id: elemnt['id'] as int,
+        title: elemnt['title'] as String,
+        image: elemnt['image'] as String);
   }
 
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-Map<String,dynamic> toJson(){
-  final Map<String,dynamic> data=<String,dynamic>{};
+    data['id'] = id;
+    data['image'] = image;
+    data['title'] = title;
 
-  data['id']=id;
-  data['image']=image;
-  data['title']=title;
-
-  return data;
-}
-
-
-
+    return data;
+  }
 }

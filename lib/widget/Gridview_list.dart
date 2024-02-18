@@ -14,7 +14,7 @@ class ProductGridView extends StatelessWidget {
             childAspectRatio:0.9,
             crossAxisCount: 2),
         itemBuilder: (context, index) {
-          return productItem(productName: 'productName', price: 100);
+          return productItem(productName: 'productName', price: 100,imagePath: '');
         },
       ),
     );
