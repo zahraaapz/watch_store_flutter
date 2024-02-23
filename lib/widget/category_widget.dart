@@ -40,7 +40,7 @@ class CategoryWidget extends StatelessWidget {
                 colors: colors
               ),borderRadius: BorderRadius.circular(MyDimens.large),
           
-          ),child: SvgPicture.asset(iconPath,height:10,width: 10,),),
+          ),child: Image.network(iconPath,height:10,width: 10,),),
               MyDimens.small.height ,
               Text(title,style: MyStyles.title.copyWith(fontSize: 18),) ],);
   }

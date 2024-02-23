@@ -7,8 +7,6 @@ import 'package:watch_store_flutter/data/repo/home_repo.dart';
 import 'package:watch_store_flutter/gen/assets.gen.dart';
 import 'package:watch_store_flutter/res/color.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
-import 'package:watch_store_flutter/res/string.dart';
-import 'package:watch_store_flutter/screens/auth/cubit/auth_cubit.dart';
 import 'package:watch_store_flutter/screens/home/bloc/home_bloc.dart';
 import 'package:watch_store_flutter/widget/category_widget.dart';
 import '../../widget/app_slider.dart';
@@ -43,53 +41,36 @@ class HomeScreen extends StatelessWidget {
                   AppSlider(
                     imgList: state.home.sliders,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CategoryWidget(
-                          size: size,
-                          title: MyStrings.desktop,
-                          iconPath: Assets.svg.desktop,
-                          colors: MyColors.catDesktop,
-                          ontap: () {}),
-                      CategoryWidget(
-                          size: size,
-                          title: MyStrings.digital,
-                          iconPath: Assets.svg.digital,
-                          colors: MyColors.catDigital,
-                          ontap: () {}),
-                      CategoryWidget(
-                          size: size,
-                          title: MyStrings.smart,
-                          iconPath: Assets.svg.smart,
-                          colors: MyColors.catSmart,
-                          ontap: () {}),
-                      CategoryWidget(
-                          size: size,
-                          title: MyStrings.classic,
-                          iconPath: Assets.svg.clasic,
-                          colors: MyColors.catClassic,
-                          ontap: () {}),
-                    ],
-                  ),
+                  SizedBox(
+                      height: 150,
+                      child: ListView.builder(itemBuilder: (c, i) {
+                        return CategoryWidget(
+                            size: size,
+                            title: state.home.categories[i].title,
+                            iconPath: state.home.categories[i].image,
+                            colors: i.isEven
+                                ? MyColors.catDesktop
+                                : MyColors.catSmart,
+                            ontap: () {});
+                      })),
                   MyDimens.medium.height,
                   Row(
                     children: [
                       SizedBox(
-                        height:255,
+                        height: 255,
                         width: 310,
                         child: ListView.builder(
-                          
                             scrollDirection: Axis.horizontal,
                             itemCount: state.home.amazingProducts.length,
                             shrinkWrap: true,
                             itemBuilder: (context, index) => productItem(
-                              imagePath:state.home.amazingProducts[index].image ,
+                                  imagePath:
+                                      state.home.amazingProducts[index].image,
                                   price:
                                       state.home.amazingProducts[index].price,
                                   productName:
                                       state.home.amazingProducts[index].title,
-                                  time: 10,
+                                  specialExpiration: state.home.amazingProducts[index].specialExpiration,
                                   discount: state
                                       .home.amazingProducts[index].discount,
                                 )),
