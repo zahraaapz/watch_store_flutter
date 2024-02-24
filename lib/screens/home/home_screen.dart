@@ -43,7 +43,10 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SizedBox(
                       height: 150,
-                      child: ListView.builder(itemBuilder: (c, i) {
+                      child: ListView.builder(
+                        itemCount: state.home.categories.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (c, i) {
                         return CategoryWidget(
                             size: size,
                             title: state.home.categories[i].title,

@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/extention.dart';
+import 'package:watch_store_flutter/utils/format_time.dart';
 import '../components/text_style.dart';
 import '../gen/assets.gen.dart';
 import '../res/color.dart';
@@ -29,7 +32,8 @@ class productItem extends StatefulWidget {
 
 class _productItemState extends State<productItem> {
   Duration duration = Duration(seconds: 0);
-
+late Timer timer;
+late int inSeconds;
   @override
   void initState() {
     // TODO: implement initState
@@ -38,13 +42,23 @@ class _productItemState extends State<productItem> {
     DateTime exp = DateTime.parse(widget.specialExpiration);
 
     duration=now.difference(exp).abs();
+   inSeconds=duration.inSeconds;
+  startTimer();
 
-
-    int hours=duration.inHours;
-    int min=duration.inMinutes.remainder(60);
-    int sec=duration.inSeconds.remainder(60);
   }
 
+startTimer(){
+  const onesec=Duration(seconds: 1);
+  timer=Timer.periodic(onesec, (timer) { 
+    setState(() {
+      if (inSeconds==0) {
+        
+      } else {
+       inSeconds--; 
+      }
+    });
+  });
+}
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -111,7 +125,7 @@ class _productItemState extends State<productItem> {
           Visibility(
               visible: duration.inSeconds > 0 ? true : false,
               child: Text(
-                '${widget.specialExpiration}',
+                formatTimer(inSeconds),
                 style: MyStyles.prodTimeStyle,
               ))
         ],

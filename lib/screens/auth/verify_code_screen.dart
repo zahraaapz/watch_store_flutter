@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/components/text_style.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
+import 'package:watch_store_flutter/utils/format_time.dart';
 import 'package:watch_store_flutter/widget/app_text_field.dart';
 import 'package:watch_store_flutter/widget/main_button.dart';
 import '../../gen/assets.gen.dart';
@@ -25,16 +26,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
 late Timer timer;
 int startTime=120;
 
-String formatTimer(int sec){
-int min=sec~/60;
-int seconds=sec%60;
 
-String minStr=min.toString().padLeft(2,'0');
-String seccondStr=seconds.toString().padLeft(2,'0');
-
-
-return '$minStr:$seccondStr';
-}
 startTimer(){
 timer=Timer.periodic(const Duration(seconds: 1),(timer){
 setState(() {
