@@ -45,20 +45,26 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                       height: 150,
                       child: ListView.builder(
-                        itemCount: state.home.categories.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (c, i) {
-                        return CategoryWidget(
-                            size: size,
-                            title: state.home.categories[i].title,
-                            iconPath: state.home.categories[i].image,
-                            colors: i.isEven
-                                ? MyColors.catDesktop
-                                : MyColors.catSmart,
-                            ontap: () {
-                              Navigator.push(context, MaterialPageRoute(builder:(context) => ProductListScreen(param:state.home.categories[i].id ,),));
-                            });
-                      })),
+                          itemCount: state.home.categories.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (c, i) {
+                            return CategoryWidget(
+                                size: size,
+                                title: state.home.categories[i].title,
+                                iconPath: state.home.categories[i].image,
+                                colors: i.isEven
+                                    ? MyColors.catDesktop
+                                    : MyColors.catSmart,
+                                ontap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ProductListScreen(
+                                          param: state.home.categories[i].id,
+                                        ),
+                                      ));
+                                });
+                          })),
                   MyDimens.medium.height,
                   Row(
                     children: [
@@ -76,7 +82,8 @@ class HomeScreen extends StatelessWidget {
                                       state.home.amazingProducts[index].price,
                                   productName:
                                       state.home.amazingProducts[index].title,
-                                  specialExpiration: state.home.amazingProducts[index].specialExpiration,
+                                  specialExpiration: state.home
+                                      .amazingProducts[index].specialExpiration,
                                   discount: state
                                       .home.amazingProducts[index].discount,
                                 )),
