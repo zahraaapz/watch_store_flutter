@@ -1,6 +1,6 @@
 import '../model/product.dart';
 import '../src/product_data_src.dart';
-
+import 'package:dio/dio.dart';
 
 abstract class IProductRepo {
 
@@ -11,7 +11,7 @@ abstract class IProductRepo {
 
 
 }
-
+final productRepository=ProductRepository(ProductRemoteDataSrc(Dio()));
 
 class ProductRepository implements IProductRepo{
 

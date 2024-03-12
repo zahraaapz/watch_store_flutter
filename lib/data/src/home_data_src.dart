@@ -14,7 +14,7 @@ class HomeRemoteDataSrc implements IHomeDataSrc {
   HomeRemoteDataSrc(this.httpClient);
 
   @override
-  Future<Home> getHome() async {
+  Future<Home>getHome() async {
     final Home home;
     final response = await httpClient.get(Endpoints.home);
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);

@@ -8,6 +8,7 @@ import 'package:watch_store_flutter/gen/assets.gen.dart';
 import 'package:watch_store_flutter/res/color.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
 import 'package:watch_store_flutter/screens/home/bloc/home_bloc.dart';
+import 'package:watch_store_flutter/screens/product_list/product_list_screen.dart';
 import 'package:watch_store_flutter/widget/category_widget.dart';
 import '../../widget/app_slider.dart';
 import '../../widget/product_item.dart';
@@ -54,7 +55,9 @@ class HomeScreen extends StatelessWidget {
                             colors: i.isEven
                                 ? MyColors.catDesktop
                                 : MyColors.catSmart,
-                            ontap: () {});
+                            ontap: () {
+                              Navigator.push(context, MaterialPageRoute(builder:(context) => ProductListScreen(param:state.home.categories[i].id ,),));
+                            });
                       })),
                   MyDimens.medium.height,
                   Row(

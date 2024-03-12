@@ -32,18 +32,22 @@ class productItem extends StatefulWidget {
 
 class _productItemState extends State<productItem> {
   Duration duration = Duration(seconds: 0);
-late Timer timer;
-late int inSeconds;
+ late Timer timer;
+ int inSeconds=0;
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
-    DateTime now = DateTime.now();
+    timer=Timer(duration, () { });
+   if (widget.specialExpiration!='') {
+   DateTime now = DateTime.now();
     DateTime exp = DateTime.parse(widget.specialExpiration);
 
     duration=now.difference(exp).abs();
    inSeconds=duration.inSeconds;
   startTimer();
+   }
+
+    super.initState();
+ 
 
   }
 
