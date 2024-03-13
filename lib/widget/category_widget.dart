@@ -9,7 +9,7 @@ import '../res/dimens.dart';
 
 
 class CategoryWidget extends StatelessWidget {
-  const CategoryWidget({
+ const CategoryWidget({
     super.key,
     required this.size,
     required this.title,
@@ -20,14 +20,16 @@ class CategoryWidget extends StatelessWidget {
 
   final Size size;
   final String title;
-  final  Function()  ontap;
+ final  Function()  ontap;
   final  String  iconPath;
   final List<Color> colors;
 
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    return GestureDetector(
+      onTap:ontap,
+    child:Column(children: [
           Container(
             padding: EdgeInsets.all(MyDimens.small),
             margin: const EdgeInsets.all(MyDimens.small),
@@ -42,6 +44,6 @@ class CategoryWidget extends StatelessWidget {
           
           ),child: Image.network(iconPath,height:10,width: 10,),),
               MyDimens.small.height ,
-              Text(title,style: MyStyles.title.copyWith(fontSize: 18),) ],);
+              Text(title,style: MyStyles.title.copyWith(fontSize: 18),) ],));
   }
 }

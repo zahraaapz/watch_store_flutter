@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/extention.dart';
+import 'package:watch_store_flutter/screens/product_single/product_single_screen.dart';
 import 'package:watch_store_flutter/utils/format_time.dart';
 import '../components/text_style.dart';
 import '../gen/assets.gen.dart';
@@ -17,10 +18,12 @@ class productItem extends StatefulWidget {
     this.specialExpiration='',
     this.discount = 0,
     this.oldPrice = 0,
+    required this.id,
   });
 
   final String productName;
   final int price;
+  final id;
   final int oldPrice;
   final int discount;
   final specialExpiration;
@@ -54,85 +57,93 @@ class _productItemState extends State<productItem> {
 startTimer(){
   const onesec=Duration(seconds: 1);
   timer=Timer.periodic(onesec, (timer) { 
-    setState(() {
+  
       if (inSeconds==0) {
-        
+        print('l');
       } else {
-       inSeconds--; 
+        setState((){
+            inSeconds--; 
+        });
+     
       }
-    });
+    
   });
 }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(8),
-      width: 190,
-      decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: MyColors.productBgGradiant)),
-      child: Column(
-        children: [
-          Image.network(
-            widget.imagePath,
-            scale: 2.4,
-          ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Text(
-              widget.productName,
-              style: MyStyles.productTite,
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder:(context) => ProductSingleScreen(id:widget.id),));
+      },
+      child: Container(
+        margin: EdgeInsets.all(8),
+        width: 190,
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: MyColors.productBgGradiant)),
+        child: Column(
+          children: [
+            Image.network(
+              widget.imagePath,
+              scale: 2.4,
             ),
-          ),
-          MyDimens.medium.height,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    ' ${widget.price.separateWithComma} تومان ',
-                    style: MyStyles.title,
-                  ),
-                  Visibility(
-                      visible: widget.discount > 0 ? true : false,
-                      child: Text(
-                        '${widget.oldPrice.separateWithComma}',
-                        style: MyStyles.oldPrice,
-                      )),
-                ],
-              ),
-              Visibility(
-                visible: widget.discount > 0 ? true : false,
-                child: Container(
-                  padding: const EdgeInsets.all(MyDimens.small * .5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(60),
-                      color: Colors.red),
-                  child: Text('${widget.discount} %'),
-                ),
-              )
-            ],
-          ),
-          MyDimens.medium.height,
-          Visibility(
-            visible: duration.inSeconds > 0 ? true : false,
-            child: Container(
-              height: 2,
-              width: double.infinity,
-              color: Colors.blue,
-            ),
-          ),
-          Visibility(
-              visible: duration.inSeconds > 0 ? true : false,
+            Align(
+              alignment: Alignment.centerRight,
               child: Text(
-                formatTimer(inSeconds),
-                style: MyStyles.prodTimeStyle,
-              ))
-        ],
+                widget.productName,
+                style: MyStyles.productTite,
+              ),
+            ),
+            MyDimens.medium.height,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      ' ${widget.price.separateWithComma} تومان ',
+                      style: MyStyles.title,
+                    ),
+                    Visibility(
+                        visible: widget.discount > 0 ? true : false,
+                        child: Text(
+                          '${widget.oldPrice.separateWithComma}',
+                          style: MyStyles.oldPrice,
+                        )),
+                  ],
+                ),
+                Visibility(
+                  visible: widget.discount > 0 ? true : false,
+                  child: Container(
+                    padding: const EdgeInsets.all(MyDimens.small * .5),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(60),
+                        color: Colors.red),
+                    child: Text('${widget.discount} %'),
+                  ),
+                )
+              ],
+            ),
+            MyDimens.medium.height,
+            Visibility(
+              visible: duration.inSeconds > 0 ? true : false,
+              child: Container(
+                height: 2,
+                width: double.infinity,
+                color: Colors.blue,
+              ),
+            ),
+            Visibility(
+                visible: duration.inSeconds > 0 ? true : false,
+                child: Text(
+                  formatTimer(inSeconds),
+                  style: MyStyles.prodTimeStyle,
+                ))
+          ],
+        ),
       ),
     );
   }

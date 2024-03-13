@@ -76,6 +76,7 @@ class HomeScreen extends StatelessWidget {
                             itemCount: state.home.amazingProducts.length,
                             shrinkWrap: true,
                             itemBuilder: (context, index) => productItem(
+                              id:state.home.amazingProducts[index].id,
                                   imagePath:
                                       state.home.amazingProducts[index].image,
                                   price:

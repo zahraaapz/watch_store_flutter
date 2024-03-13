@@ -77,9 +77,11 @@ class ProductRemoteDataSrc implements IProductDataSrc {
   }
   
   @override
-  Future<ProductDetailes> getproductDetail(int id)async {
+  Future<ProductDetailes> getproductDetail(int id) async {
   final response =await httpClient.get('${Endpoints.productDetail}$id');
         HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
-      return ProductDetailes.fromJson(response.data['date'][0]);
+       return ProductDetailes.fromJson(response.data['data'][0]);
+
   }
+     
 }

@@ -22,11 +22,12 @@ class ProductGridView extends StatelessWidget {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisSpacing: 2,
                 mainAxisSpacing: 2,
-                childAspectRatio: 0.5,
+                childAspectRatio: 0.7,
                 crossAxisCount: 2),
             itemBuilder: (context, index) {
               
               return productItem(
+                id:state.productList[index].id,
                   productName: state.productList[index].title,
                    price: state.productList[index].price,
                   imagePath: state.productList[index].image,
