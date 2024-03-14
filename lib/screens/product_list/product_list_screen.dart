@@ -38,7 +38,9 @@ class ProductListScreen extends StatelessWidget {
               ],
             ),
             IconButton(
-                onPressed: () {}, icon: SvgPicture.asset(Assets.svg.close))
+                onPressed: () {
+                  Navigator.pop(context);
+                }, icon: SvgPicture.asset(Assets.svg.close))
           ],
         )),
         body: Column(

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' ;
 import 'package:watch_store_flutter/data/model/product_detail.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
 
@@ -20,8 +20,9 @@ class _ProductTabViewState extends State<ProductTabView> {
     return Column(
       children: [
         SizedBox(
+         
           height: 50,
-          width: MediaQuery.sizeOf(context).width * .3,
+          width: MediaQuery.sizeOf(context).width /1.2,
           child: ListView.builder(
           itemCount:tabs.length ,
           itemExtent: MediaQuery.sizeOf(context).width /tabs.length,
@@ -32,8 +33,8 @@ class _ProductTabViewState extends State<ProductTabView> {
                   selectedIndex=index;
                 });
               },
-              child: Container(
-                padding: const EdgeInsets.all(MyDimens.medium),
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
                 child: Text(tabs[index],
                 style: index==selectedIndex? MyStyles.selectedTab:MyStyles.unselectedTab,),
               ),
