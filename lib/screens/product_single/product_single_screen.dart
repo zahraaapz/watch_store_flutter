@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:watch_store_flutter/components/text_style.dart';
+import 'package:watch_store_flutter/data/repo/cart_repo.dart';
 import 'package:watch_store_flutter/data/repo/product_repo.dart';
 import 'package:watch_store_flutter/gen/assets.gen.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
+import 'package:watch_store_flutter/screens/cart/bloc/cart_bloc.dart';
 import 'package:watch_store_flutter/screens/product_single/bloc/product_single_bloc.dart';
 import 'package:watch_store_flutter/widget/cart_badge.dart';
 import 'package:watch_store_flutter/widget/custom_app_bar.dart';
@@ -16,16 +18,19 @@ class ProductSingleScreen extends StatelessWidget {
   final id;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) {
-        final productDetailesBolc = ProductSingleBloc(productRepository);
-        productDetailesBolc.add(ProductSingleInit(id: id));
-        return productDetailesBolc;
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) {
+            final productDetailesBolc = ProductSingleBloc(productRepository);
+            productDetailesBolc.add(ProductSingleInit(id: id));
+            return productDetailesBolc;
+          },
+        ),
+        BlocProvider(create: (context) => CartBloc(cartRepsitory)),
+      ],
       child: BlocConsumer<ProductSingleBloc, ProductSingleState>(
-        listener: (context, state) {
-          
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           if (state is ProductSingleLoading) {
             return const Center(child: CircularProgressIndicator());
@@ -73,7 +78,7 @@ class ProductSingleScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                 state.productDetailes.brand!,
+                                  state.productDetailes.brand!,
                                   style: MyStyles.productTite,
                                   textDirection: TextDirection.rtl,
                                 ),
@@ -83,14 +88,48 @@ class ProductSingleScreen extends StatelessWidget {
                                   textDirection: TextDirection.rtl,
                                 ),
                                 const Divider(),
-                                ProductTabView( productDetailes:state.productDetailes)
+                                ProductTabView(
+                                    productDetailes: state.productDetailes)
                               ],
                             ),
                           ),
                         ],
                       ),
                     ),
-                    Positioned(bottom: 0, left: 0, right: 0, child: Container())
+                    BlocConsumer<CartBloc, CartState>(
+                      listener: (cartcontext, cartstate) {
+                        if (cartstate is CartItemAddedState) {
+                          ScaffoldMessenger.of(cartcontext).showSnackBar(
+                              SnackBar(
+                                  backgroundColor: Colors.green,
+                                  duration: const Duration(milliseconds: 500),
+                                  content: Text('به سبد خرید اضافه شده',style:MyStyles.caption,textAlign: TextAlign.center,)));
+                        }
+                      },
+                      builder: (cartcontext, cartstate) {
+                        if (cartstate is CartLoadingState) {
+                          return const Positioned(
+                              bottom: 0,
+                            left: MyDimens.large,
+                            right: MyDimens.large,
+                            child: LinearProgressIndicator());
+                        }
+
+                        return Positioned(
+                            bottom: 0,
+                            left: MyDimens.large,
+                            right: MyDimens.large,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                BlocProvider.of<CartBloc>(cartcontext).add(AddToCartEvent(state.productDetailes.id!));
+                              },
+                              child: const Text(
+                                'افزودن به سبد خرید',
+                                style: MyStyles.mainButton,
+                              ),
+                            ));
+                      },
+                    )
                   ],
                 ),
               ),

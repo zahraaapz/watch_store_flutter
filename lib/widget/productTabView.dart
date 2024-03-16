@@ -64,25 +64,24 @@ class PropertiesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: ListView.builder(
-      physics: const ClampingScrollPhysics(),
-      itemCount: properties.length,
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        return Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(MyDimens.medium),
-          margin: const EdgeInsets.all(MyDimens.medium),
-          color: MyColors.surfaceColor,
-          child: Text(
-            "${properties[index].property} : ${properties[index].value}",
-            style: MyStyles.caption,
-            textAlign: TextAlign.right,
-          ),
+    return ListView.builder(
+          physics: const ClampingScrollPhysics(),
+          itemCount: properties.length,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(MyDimens.medium),
+      margin: const EdgeInsets.all(MyDimens.medium),
+      color: MyColors.surfaceColor,
+      child: Text(
+        "${properties[index].property} : ${properties[index].value}",
+        style: MyStyles.caption,
+        textAlign: TextAlign.right,
+      ),
+    );
+          },
         );
-      },
-    ));
   }
 }
 
@@ -93,25 +92,24 @@ class CommentsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: ListView.builder(
-      physics: const ClampingScrollPhysics(),
-      itemCount: comments.length,
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        return Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(MyDimens.medium),
-          margin: const EdgeInsets.all(MyDimens.medium),
-          color: MyColors.surfaceColor,
-          child: Text(
-            "${comments[index].user} : ${comments[index].body}",
-            style: MyStyles.caption,
-            textAlign: TextAlign.right,
-          ),
+    return ListView.builder(
+          physics: const ClampingScrollPhysics(),
+          itemCount: comments.length,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(MyDimens.medium),
+      margin: const EdgeInsets.all(MyDimens.medium),
+      color: MyColors.surfaceColor,
+      child: Text(
+        "${comments[index].user} : ${comments[index].body}",
+        style: MyStyles.caption,
+        textAlign: TextAlign.right,
+      ),
+    );
+          },
         );
-      },
-    ));
   }
 }
 
