@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:watch_store_flutter/components/extention.dart';
+import 'package:watch_store_flutter/data/repo/cart_repo.dart';
 import 'package:watch_store_flutter/data/repo/product_repo.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
 import 'package:watch_store_flutter/screens/product_list/bloc/product_list_bloc.dart';
@@ -29,7 +30,9 @@ class ProductListScreen extends StatelessWidget {
             child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CartBadge(count: 1),
+             ValueListenableBuilder(
+                      valueListenable: cartRepsitory.count,
+                      builder: (context, value, child) =>  CartBadge(count: value,)),
             Row(
               children: [
                 Text('پرفروش ترین ها'),

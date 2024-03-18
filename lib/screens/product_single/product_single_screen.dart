@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,11 +31,15 @@ class ProductSingleScreen extends StatelessWidget {
             return productDetailesBolc;
           },
         ),
-        BlocProvider(create: (context) => CartBloc(cartRepsitory)),
+        BlocProvider(create: (context) {
+          final cartbloc=
+         CartBloc(cartRepsitory);
+         cartbloc.add(CartItemCountEvent());
+         return cartbloc;
+        }),
       ],
-      child: BlocConsumer<ProductSingleBloc, ProductSingleState>(
-        listener: (context, state) {},
-        builder: (context, state) {
+      child: BlocBuilder<ProductSingleBloc, ProductSingleState>(
+            builder: (context, state) {
           if (state is ProductSingleLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is ProductSingleLoaded) {
@@ -43,7 +48,9 @@ class ProductSingleScreen extends StatelessWidget {
                 appBar: CustomAppBar(
                     child: Row(
                   children: [
-                    const CartBadge(),
+                     ValueListenableBuilder(
+                      valueListenable: cartRepsitory.count,
+                      builder: (context, value, child) =>  CartBadge(count: value,)),
                     Expanded(
                         child: FittedBox(
                       child: Text(

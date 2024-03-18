@@ -9,6 +9,7 @@ sealed class CartState extends Equatable {
 
 final class CartLoadingState extends CartState {}
 final class CartInitialState extends CartState {}
+final class CartCountState extends CartState {}
 
 final class CartItemDeletedState extends CartState {}
 
