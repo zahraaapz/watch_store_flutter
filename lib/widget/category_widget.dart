@@ -44,6 +44,6 @@ class CategoryWidget extends StatelessWidget {
           
           ),child: Image.network(iconPath,height:10,width: 10,),),
               MyDimens.small.height ,
-              Text(title,style: MyStyles.title.copyWith(fontSize: 18),) ],));
+              Text(title,style: MyStyles.title.copyWith(fontSize: 14),) ],));
   }
 }

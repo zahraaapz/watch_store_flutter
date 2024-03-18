@@ -5,7 +5,6 @@ import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/screens/product_single/product_single_screen.dart';
 import 'package:watch_store_flutter/utils/format_time.dart';
 import '../components/text_style.dart';
-import '../gen/assets.gen.dart';
 import '../res/color.dart';
 import '../res/dimens.dart';
 
@@ -15,7 +14,7 @@ class productItem extends StatefulWidget {
     required this.productName,
     required this.price,
     required this.imagePath,
-    this.specialExpiration='',
+    this.specialExpiration = '',
     this.discount = 0,
     this.oldPrice = 0,
     required this.id,
@@ -35,45 +34,46 @@ class productItem extends StatefulWidget {
 
 class _productItemState extends State<productItem> {
   Duration duration = Duration(seconds: 0);
- late Timer timer;
- int inSeconds=0;
+  late Timer timer;
+  int inSeconds = 0;
   @override
   void initState() {
-    timer=Timer(duration, () { });
-   if (widget.specialExpiration!='') {
-   DateTime now = DateTime.now();
-    DateTime exp = DateTime.parse(widget.specialExpiration);
+    timer = Timer(duration, () {});
+    if (widget.specialExpiration != '') {
+      DateTime now = DateTime.now();
+      DateTime exp = DateTime.parse(widget.specialExpiration);
 
-    duration=now.difference(exp).abs();
-   inSeconds=duration.inSeconds;
-  startTimer();
-   }
+      duration = now.difference(exp).abs();
+      inSeconds = duration.inSeconds;
+      startTimer();
+    }
 
     super.initState();
- 
-
   }
 
-startTimer(){
-  const onesec=Duration(seconds: 1);
-  timer=Timer.periodic(onesec, (timer) { 
-  
-      if (inSeconds==0) {
-        print('l');
-      } else {
-        setState((){
-            inSeconds--; 
-        });
-     
-      }
-    
-  });
-}
+  startTimer() {
+    const onesec = Duration(seconds: 1);
+    timer = Timer.periodic(onesec, (timer) {
+      setState(() {
+        if (inSeconds == 0) {
+          timer.cancel();
+          print('l');
+        } else {
+          inSeconds--;
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder:(context) => ProductSingleScreen(id:widget.id),));
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProductSingleScreen(id: widget.id),
+            ));
       },
       child: Container(
         margin: EdgeInsets.all(8),

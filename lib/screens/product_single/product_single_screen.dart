@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:watch_store_flutter/components/button_style.dart';
 import 'package:watch_store_flutter/components/text_style.dart';
 import 'package:watch_store_flutter/data/repo/cart_repo.dart';
 import 'package:watch_store_flutter/data/repo/product_repo.dart';
@@ -59,6 +61,7 @@ class ProductSingleScreen extends StatelessWidget {
                 body: Stack(
                   children: [
                     SingleChildScrollView(
+                    
                       child: Column(
                         children: [
                           Image.network(
@@ -67,8 +70,8 @@ class ProductSingleScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                           Container(
-                            margin: EdgeInsets.all(MyDimens.medium),
-                            padding: EdgeInsets.all(MyDimens.small),
+                            margin: const EdgeInsets.all(MyDimens.medium),
+                            padding: const EdgeInsets.all(MyDimens.small),
                             decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.circular(MyDimens.medium),
@@ -88,8 +91,7 @@ class ProductSingleScreen extends StatelessWidget {
                                   textDirection: TextDirection.rtl,
                                 ),
                                 const Divider(),
-                                ProductTabView(
-                                    productDetailes: state.productDetailes)
+                                ProductTabView(productDetailes: state.productDetailes)
                               ],
                             ),
                           ),
@@ -99,20 +101,24 @@ class ProductSingleScreen extends StatelessWidget {
                     BlocConsumer<CartBloc, CartState>(
                       listener: (cartcontext, cartstate) {
                         if (cartstate is CartItemAddedState) {
-                          ScaffoldMessenger.of(cartcontext).showSnackBar(
-                              SnackBar(
+                          ScaffoldMessenger.of(cartcontext)
+                              .showSnackBar(SnackBar(
                                   backgroundColor: Colors.green,
                                   duration: const Duration(milliseconds: 500),
-                                  content: Text('به سبد خرید اضافه شده',style:MyStyles.caption,textAlign: TextAlign.center,)));
+                                  content: Text(
+                                    'به سبد خرید اضافه شده',
+                                    style: MyStyles.caption,
+                                    textAlign: TextAlign.center,
+                                  )));
                         }
                       },
                       builder: (cartcontext, cartstate) {
                         if (cartstate is CartLoadingState) {
                           return const Positioned(
                               bottom: 0,
-                            left: MyDimens.large,
-                            right: MyDimens.large,
-                            child: LinearProgressIndicator());
+                              left: MyDimens.large,
+                              right: MyDimens.large,
+                              child: LinearProgressIndicator());
                         }
 
                         return Positioned(
@@ -120,8 +126,10 @@ class ProductSingleScreen extends StatelessWidget {
                             left: MyDimens.large,
                             right: MyDimens.large,
                             child: ElevatedButton(
+                              style: AppButtonStyle.mainButtonStyle,
                               onPressed: () {
-                                BlocProvider.of<CartBloc>(cartcontext).add(AddToCartEvent(state.productDetailes.id!));
+                                BlocProvider.of<CartBloc>(cartcontext).add(
+                                    AddToCartEvent(state.productDetailes.id!));
                               },
                               child: const Text(
                                 'افزودن به سبد خرید',

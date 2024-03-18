@@ -10,6 +10,7 @@ abstract class ICartDataSrc {
   Future<void> deleteFromCart({required int productId});
 }
 
+
 class CartRemoteDataSrc implements ICartDataSrc {
   final Dio httpClient;
 
@@ -17,10 +18,16 @@ class CartRemoteDataSrc implements ICartDataSrc {
 
   @override
   Future<void> addToCart({required int productId}) async {
-    await httpClient
+    try {
+          await httpClient
         .post(Endpoints.addToCart, data: {'product_id': productId}).then(
             (value) =>
                 HTTPResponseValidator.isValidStatusCode(value.statusCode ?? 0));
+    } catch (e) {
+      print(e.toString());
+    }
+
+               
   }
 
   @override
@@ -37,9 +44,11 @@ class CartRemoteDataSrc implements ICartDataSrc {
 
     final response = await httpClient.post(Endpoints.userCart);
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
-    response.data['data']['user_cart'].forEach((ele) {
-      cartlist.add(CartModel.fromJson(ele));
-    });
+
+    for(var ele in (response.data['data']['user_cart'])){
+      cartlist.add(ele);
+    }
+   
     return cartlist;
   }
 

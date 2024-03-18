@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -149,23 +148,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
     ));
   }
-//////////////not work
-  // Future<String> getAddress(double lng, double lat) async {
-  //   String address = '';
-  //   try {
-  //     await placemarkFromCoordinates(lat, lng, localeIdentifier: 'fa')
-  //         .then((value) {
-  //       Placemark first = value.first;
 
-  //       address = '${first.street}' '${first.locality}' '${first.country}';
-  //     });
-  //     print(lat.toString());
-  //     print(lng.toString());
-  //     return address;
-  //   } catch (e) {
-  //     return 'آدرس یافت نشد';
-  //   }
-  // }
 
   Future<String> getAddress(double lng, double lat) async {
 
@@ -173,7 +156,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     await Dio()
         .get("https://api.neshan.org/v5/reverse?lat=$lat&lng=$lng",
             options: Options(headers: {
-              "Api-Key":'service.b25fe0490cb348ca8fab44bb75b2481a'
+             "Api-Key": 'service.af60e2291dd3468f9cb9637df3818412'
             }))
         .then((val) {
                 print(val.toString());

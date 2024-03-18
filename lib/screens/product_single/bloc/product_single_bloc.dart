@@ -16,7 +16,7 @@ class ProductSingleBloc extends Bloc<ProductSingleEvent, ProductSingleState> {
       emit(ProductSingleLoading());
       final productDetailes=await _iProductRepo.getproductDetail(event.id);
       emit(ProductSingleLoaded(productDetailes));
-      print('ll');
+     
     } catch (e) {
        emit(ProductSingleError());
     }

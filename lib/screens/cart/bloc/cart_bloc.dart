@@ -8,7 +8,7 @@ part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
   final ICartRepository _iCartRepository;
-  CartBloc(this._iCartRepository) : super(CartLoadingState()) {
+  CartBloc(this._iCartRepository) : super(CartInitialState()) {
     on<CartEvent>((event, emit) async {
       try {
         if (event is CartInitEvent) {
@@ -25,8 +25,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
               .then((value) => emit(CartItemDeletedState()));
         } else if (event is AddToCartEvent) {
           emit(CartLoadingState());
-
-          await _iCartRepository
+           await _iCartRepository
               .addToCart(productId: event.productId)
               .then((value) => emit(CartItemAddedState()));
         }

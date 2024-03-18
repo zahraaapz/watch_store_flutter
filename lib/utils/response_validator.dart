@@ -1,8 +1,10 @@
 class HTTPResponseValidator {
   static bool isValidStatusCode(int statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
+   
       return true;
     } else {
+      
       throw HTTPExeption(statusCode);
     }
   }
