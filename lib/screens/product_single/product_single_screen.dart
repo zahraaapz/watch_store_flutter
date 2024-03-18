@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:watch_store_flutter/components/button_style.dart';
+import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/components/text_style.dart';
 import 'package:watch_store_flutter/data/repo/cart_repo.dart';
 import 'package:watch_store_flutter/data/repo/product_repo.dart';
@@ -91,7 +92,8 @@ class ProductSingleScreen extends StatelessWidget {
                                   textDirection: TextDirection.rtl,
                                 ),
                                 const Divider(),
-                                ProductTabView(productDetailes: state.productDetailes)
+                                ProductTabView(productDetailes: state.productDetailes),
+                                60.0.height
                               ],
                             ),
                           ),

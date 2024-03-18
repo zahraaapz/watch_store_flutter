@@ -23,7 +23,7 @@ class _ProductTabViewState extends State<ProductTabView> {
           width: MediaQuery.sizeOf(context).width / 1.2,
           child: ListView.builder(
             itemCount: tabs.length,
-            itemExtent: MediaQuery.sizeOf(context).width / tabs.length,
+                       itemExtent: MediaQuery.sizeOf(context).width / 3.1,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => GestureDetector(
               onTap: () {
