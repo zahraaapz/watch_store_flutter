@@ -8,16 +8,28 @@ sealed class CartState extends Equatable {
 }
 
 final class CartLoadingState extends CartState {}
+
 final class CartInitialState extends CartState {}
+
 final class CartCountState extends CartState {}
 
-final class CartItemDeletedState extends CartState {}
+final class CartItemRemovedState extends CartState {
+  final List<CartModel> cartList;
 
-final class CartItemRemovedState extends CartState {}
+  const CartItemRemovedState(this.cartList);
+}
 
-final class CartItemAddedState extends CartState {}
+final class CartItemAddedState extends CartState {
+  final List<CartModel> cartList;
 
-final class CartItemDeleted extends CartState {}
+  const CartItemAddedState(this.cartList);
+}
+
+final class CartItemDeleted extends CartState {
+  final List<CartModel> cartList;
+
+  const CartItemDeleted(this.cartList);
+}
 
 final class CartErrorState extends CartState {}
 

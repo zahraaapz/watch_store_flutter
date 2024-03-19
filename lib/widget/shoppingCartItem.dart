@@ -8,16 +8,16 @@ import '../gen/assets.gen.dart';
 import '../res/color.dart';
 
 class ShoppingCartItem extends StatelessWidget {
-  ShoppingCartItem({super.key,required this.oldprice,required this.price,required this.productTite});
+  ShoppingCartItem({super.key,required this.count,required this.productTite, this.add, this.delete, this.remove});
   int count = 0;
-  int oldprice;
-  int price;
+final add;
+final delete;
+final remove;
   String productTite;
   @override
   Widget build(BuildContext context) {
     return SurfaceContainer(
-      child: Row(crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
+      child: 
           Expanded(
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -28,31 +28,23 @@ class ShoppingCartItem extends StatelessWidget {
                 productTite,
                 style: MyStyles.productTite.copyWith(fontSize: 12),
               ),
-              Text(
-                'قیمت : ${price.separateWithComma}  تومان',
-                style: MyStyles.caption,
-              ),
-              Text('تخفیف : ${oldprice.separateWithComma}  تومان',
-                  style:
-                      MyStyles.caption.copyWith(color: MyColors.primaryColor)),
               Divider(),
-              Row(
-                children: [SvgPicture.asset(Assets.svg.delete)],
-              )
-            ],
-          )),
-          Row(
+            
+               Row(
             children: [
       
               IconButton(
-                  onPressed: () {}, icon: SvgPicture.asset(Assets.svg.minus)),
+                  onPressed:delete, icon: SvgPicture.asset(Assets.svg.delete)),
+              IconButton(
+                  onPressed:remove, icon: SvgPicture.asset(Assets.svg.minus)),
               Text('عدد $count'),
               IconButton(
-                  onPressed: () {}, icon: SvgPicture.asset(Assets.svg.plus)),
+                  onPressed:add, icon: SvgPicture.asset(Assets.svg.plus)),
             ],
-          ),
-        ],
-      ),
+          ), ],
+          )),
+      
+       
     );
   }
 }

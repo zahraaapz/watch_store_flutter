@@ -22,24 +22,14 @@ class ProductSingleScreen extends StatelessWidget {
   final id;
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) {
-            final productDetailesBolc = ProductSingleBloc(productRepository);
+    return BlocProvider(
+      create: (context) {
+      final productDetailesBolc = ProductSingleBloc(productRepository);
             productDetailesBolc.add(ProductSingleInit(id: id));
             return productDetailesBolc;
-          },
-        ),
-        BlocProvider(create: (context) {
-          final cartbloc=
-         CartBloc(cartRepsitory);
-         cartbloc.add(CartItemCountEvent());
-         return cartbloc;
-        }),
-      ],
+      },
       child: BlocBuilder<ProductSingleBloc, ProductSingleState>(
-            builder: (context, state) {
+        builder: (context, state) {
           if (state is ProductSingleLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is ProductSingleLoaded) {
@@ -48,9 +38,11 @@ class ProductSingleScreen extends StatelessWidget {
                 appBar: CustomAppBar(
                     child: Row(
                   children: [
-                     ValueListenableBuilder(
-                      valueListenable: cartRepsitory.count,
-                      builder: (context, value, child) =>  CartBadge(count: value,)),
+                    ValueListenableBuilder(
+                        valueListenable: cartRepsitory.count,
+                        builder: (context, value, child) => CartBadge(
+                              count: value,
+                            )),
                     Expanded(
                         child: FittedBox(
                       child: Text(
@@ -69,7 +61,6 @@ class ProductSingleScreen extends StatelessWidget {
                 body: Stack(
                   children: [
                     SingleChildScrollView(
-                    
                       child: Column(
                         children: [
                           Image.network(
@@ -99,7 +90,8 @@ class ProductSingleScreen extends StatelessWidget {
                                   textDirection: TextDirection.rtl,
                                 ),
                                 const Divider(),
-                                ProductTabView(productDetailes: state.productDetailes),
+                                ProductTabView(
+                                    productDetailes: state.productDetailes),
                                 60.0.height
                               ],
                             ),

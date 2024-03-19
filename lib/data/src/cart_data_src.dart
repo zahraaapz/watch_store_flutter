@@ -5,10 +5,10 @@ import 'package:watch_store_flutter/utils/response_validator.dart';
 
 abstract class ICartDataSrc {
   Future<List<CartModel>> getUserCart();
-  Future<int> addToCart({required int productId});
-  Future<void> removeFromCart({required int productId});
-  Future<int> deleteFromCart({required int productId});
-    Future<int> countCartItem();
+  Future<List<CartModel>> addToCart({required int productId});
+  Future<List<CartModel>> removeFromCart({required int productId});
+  Future<List<CartModel>> deleteFromCart({required int productId});
+  Future<int> countCartItem();
 
 }
 
@@ -18,27 +18,38 @@ class CartRemoteDataSrc implements ICartDataSrc {
   CartRemoteDataSrc(this.httpClient);
 
   @override
-  Future<int> addToCart({required int productId}) async =>
-  
-      await httpClient.post(Endpoints.addToCart,
-          data: {'product_id': productId}).then((value) {
-        HTTPResponseValidator.isValidStatusCode(value.statusCode ?? 0);
-           return (value.data['data']['user_cart'] as List).length;
+  Future<List<CartModel>> addToCart({required int productId}) async {
+  List<CartModel> cartlist = [];
 
-      });
+
+    final response = await httpClient.post(Endpoints.addToCart);
+    HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
+
+    for (var ele in (response.data['data']['user_cart'])) {
+      cartlist.add(ele);
+    }
+
+    return cartlist;
+
+  }
 
   
 
   @override
-  Future<int> deleteFromCart({required int productId}) async =>
-    await httpClient
-        .post(Endpoints.deleteFromCart, data: {'product_id': productId}).then(
-            (value) {
-                HTTPResponseValidator.isValidStatusCode(value.statusCode ?? 0);
+  Future<List<CartModel>> deleteFromCart({required int productId}) async{
+  List<CartModel> cartlist = [];
 
-              return (value.data['data']['user_cart'] as List).length ;   
-            });
-  
+
+    final response = await httpClient.post(Endpoints.deleteFromCart);
+    HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
+
+    for (var ele in (response.data['data']['user_cart'])) {
+      cartlist.add(ele);
+    }
+
+    return cartlist;
+
+  }
 
   @override
   Future<List<CartModel>> getUserCart() async {
@@ -55,12 +66,22 @@ class CartRemoteDataSrc implements ICartDataSrc {
   }
 
   @override
-  Future<void> removeFromCart({required int productId}) async {
-    await httpClient
-        .post(Endpoints.removeFromCart, data: {'product_id': productId}).then(
-            (value) =>
-                HTTPResponseValidator.isValidStatusCode(value.statusCode ?? 0));
+  Future<List<CartModel>> removeFromCart({required int productId}) async {
+  List<CartModel> cartlist = [];
+
+
+    final response = await httpClient.post(Endpoints.removeFromCart);
+    HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
+
+    for (var ele in (response.data['data']['user_cart'])) {
+      cartlist.add(ele);
+    }
+
+    return cartlist;
+
   }
+
+   
   
   @override
   Future<int> countCartItem() async{
