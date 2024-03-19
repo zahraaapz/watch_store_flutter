@@ -22,7 +22,7 @@ class CartRemoteDataSrc implements ICartDataSrc {
   List<CartModel> cartlist = [];
 
 
-    final response = await httpClient.post(Endpoints.addToCart);
+    final response = await httpClient.post(Endpoints.addToCart,data: {'product_id':productId});
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
 
     for (var ele in (response.data['data']['user_cart'])) {
@@ -40,7 +40,7 @@ class CartRemoteDataSrc implements ICartDataSrc {
   List<CartModel> cartlist = [];
 
 
-    final response = await httpClient.post(Endpoints.deleteFromCart);
+    final response = await httpClient.post(Endpoints.deleteFromCart,data: {'product_id':productId});
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
 
     for (var ele in (response.data['data']['user_cart'])) {
@@ -56,6 +56,7 @@ class CartRemoteDataSrc implements ICartDataSrc {
     List<CartModel> cartlist = [];
 
     final response = await httpClient.post(Endpoints.userCart);
+    
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
 
     for (var ele in (response.data['data']['user_cart'])) {
@@ -70,7 +71,7 @@ class CartRemoteDataSrc implements ICartDataSrc {
   List<CartModel> cartlist = [];
 
 
-    final response = await httpClient.post(Endpoints.removeFromCart);
+    final response = await httpClient.post(Endpoints.removeFromCart,data: {'product_id':productId});
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
 
     for (var ele in (response.data['data']['user_cart'])) {

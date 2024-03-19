@@ -65,22 +65,28 @@ class CartScreen extends StatelessWidget {
               builder: (context, state) {
                 if (state is CartLoadedState) {
                   return CartList(list: state.cartList);
-                } else if (state is CartItemAddedState) {
+                } 
+                else if (state is CartItemAddedState) {
                   return CartList(list: state.cartList);
-                } else if (state is CartItemDeleted) {
+                } 
+                else if (state is CartItemDeleted) {
                   return CartList(list: state.cartList);
-                } else if (state is CartItemRemovedState) {
+                }
+                 else if (state is CartItemRemovedState) {
                   return CartList(list: state.cartList);
-                } else if (state is CartErrorState) {
+                }
+                 else if (state is CartErrorState) {
                   return Text('data');
-                } else if (state is CartLoadingState) {
-                  return LinearProgressIndicator();
-                } else {
+                }
+                 else if (state is CartLoadingState) {
+                  return const LinearProgressIndicator();
+                } 
+                else {
                   return ElevatedButton(
                       onPressed: () {
                         BlocProvider.of<CartBloc>(context).add(CartInitEvent());
                       },
-                      child: Text('تلاش محدد'));
+                      child: const Text('تلاش محدد'));
                 }
               },
             ),
@@ -105,13 +111,19 @@ class CartList extends StatelessWidget {
         child: ListView.builder(
       itemCount: list.length,
       itemBuilder: (context, index) {
-        final cartbloc=BlocProvider.of<CartBloc>(context);
+        final cartbloc = BlocProvider.of<CartBloc>(context);
         return ShoppingCartItem(
           productTite: 'ساعت شیائومی mi Watch lite',
           count: list[index].count,
-          add: () {cartbloc.add(AddToCartEvent(list[index].productId));},
-          remove: () {cartbloc.add(RemoveFromCartEvent(list[index].productId));},
-          delete: () {cartbloc.add(DeleteFromCartEvent(list[index].productId));},
+          add: () {
+            cartbloc.add(AddToCartEvent(list[index].productId));
+          },
+          remove: () {
+            cartbloc.add(RemoveFromCartEvent(list[index].productId));
+          },
+          delete: () {
+            cartbloc.add(DeleteFromCartEvent(list[index].productId));
+          },
         );
       },
     ));
