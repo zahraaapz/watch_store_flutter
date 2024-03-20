@@ -102,7 +102,7 @@ class ProductSingleScreen extends StatelessWidget {
                     BlocConsumer<CartBloc, CartState>(
                       listener: (cartcontext, cartstate) {
                         if (cartstate is CartItemAddedState) {
-                          ScaffoldMessenger.of(cartcontext)
+                          ScaffoldMessenger.of(context)
                               .showSnackBar(SnackBar(
                                   backgroundColor: Colors.green,
                                   duration: const Duration(milliseconds: 500),
@@ -129,7 +129,7 @@ class ProductSingleScreen extends StatelessWidget {
                             child: ElevatedButton(
                               style: AppButtonStyle.mainButtonStyle,
                               onPressed: () {
-                                BlocProvider.of<CartBloc>(cartcontext).add(
+                                BlocProvider.of<CartBloc>(context).add(
                                     AddToCartEvent(state.productDetailes.id!));
                               },
                               child: const Text(

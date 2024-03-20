@@ -3,16 +3,21 @@ class CartModel {
   int productId;
   String product;
   int count;
-
+final image;
+final price;
   CartModel(
       {required this.id,
       required this.productId,
+      required this.image,
+      required this.price,
       required this.product,
       required this.count});
 
   factory CartModel.fromJson(Map<String, dynamic> json) {
     return CartModel(
       id: json['id'],
+      image: json['image'],
+      price: json['price'],
       productId: json['product_id'],
       product: json['product'],
       count: json['count'],

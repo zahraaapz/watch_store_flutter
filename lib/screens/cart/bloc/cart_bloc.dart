@@ -14,6 +14,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         if (event is CartInitEvent) {
           emit(CartLoadingState());
           final cartlist = await _iCartRepository.getUserCart();
+        
           emit(CartLoadedState(cartlist));
         }
         
@@ -46,7 +47,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
               .then((value) => emit(CartCountState()));
         }
       } catch (e) {
-        emit(CartErrorState());
+        emit(CartErrorState(e.toString()));
       }
     });
   }

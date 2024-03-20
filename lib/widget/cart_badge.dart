@@ -12,7 +12,7 @@ class CartBadge extends StatelessWidget {
       children: [
         MyDimens.small.width,
         SvgPicture.asset(
-          Assets.svg.smart,
+          Assets.svg.cart,
           colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
         ),
         Visibility(

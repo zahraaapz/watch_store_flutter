@@ -76,7 +76,7 @@ class CartScreen extends StatelessWidget {
                   return CartList(list: state.cartList);
                 }
                  else if (state is CartErrorState) {
-                  return Text('data');
+                  return Center(child: Text(state.e));
                 }
                  else if (state is CartLoadingState) {
                   return const LinearProgressIndicator();
@@ -113,7 +113,8 @@ class CartList extends StatelessWidget {
       itemBuilder: (context, index) {
         final cartbloc = BlocProvider.of<CartBloc>(context);
         return ShoppingCartItem(
-          productTite: 'ساعت شیائومی mi Watch lite',
+          image: list[index].image,
+          productTite: list[index].product,
           count: list[index].count,
           add: () {
             cartbloc.add(AddToCartEvent(list[index].productId));

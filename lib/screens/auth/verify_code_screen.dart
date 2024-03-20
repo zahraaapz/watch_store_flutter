@@ -84,7 +84,7 @@ startTimer();
                   if (state is VerifiedIsRegisterState) {
                      Navigator.pushNamed(context, Screens.mainScreen);
                   } else if (state is VerifiedNotRegisterState) {
-                     Navigator.pushNamed(context, Screens.registerUserScreen);
+                     Navigator.pushNamed(context, Screens.mainScreen);
                   }
                 },
                 builder: (context, state) {

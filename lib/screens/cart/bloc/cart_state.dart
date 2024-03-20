@@ -31,7 +31,11 @@ final class CartItemDeleted extends CartState {
   const CartItemDeleted(this.cartList);
 }
 
-final class CartErrorState extends CartState {}
+final class CartErrorState extends CartState {
+  final String e;
+
+  CartErrorState(this.e);
+}
 
 final class CartLoadedState extends CartState {
   final List<CartModel> cartList;

@@ -26,7 +26,7 @@ class CartRemoteDataSrc implements ICartDataSrc {
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
 
     for (var ele in (response.data['data']['user_cart'])) {
-      cartlist.add(ele);
+      cartlist.add(CartModel.fromJson(ele));
     }
 
     return cartlist;
@@ -44,7 +44,7 @@ class CartRemoteDataSrc implements ICartDataSrc {
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
 
     for (var ele in (response.data['data']['user_cart'])) {
-      cartlist.add(ele);
+      cartlist.add(CartModel.fromJson(ele));
     }
 
     return cartlist;
@@ -58,9 +58,8 @@ class CartRemoteDataSrc implements ICartDataSrc {
     final response = await httpClient.post(Endpoints.userCart);
     
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
-
-    for (var ele in (response.data['data']['user_cart'])) {
-      cartlist.add(ele);
+    for (var ele in (response.data['data']['user_cart']) as List) {
+      cartlist.add(CartModel.fromJson(ele));
     }
 
     return cartlist;
@@ -75,7 +74,7 @@ class CartRemoteDataSrc implements ICartDataSrc {
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
 
     for (var ele in (response.data['data']['user_cart'])) {
-      cartlist.add(ele);
+      cartlist.add(CartModel.fromJson(ele));
     }
 
     return cartlist;
