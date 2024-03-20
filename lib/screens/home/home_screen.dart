@@ -76,17 +76,7 @@ class HomeScreen extends StatelessWidget {
                             itemCount: state.home.amazingProducts.length,
                             shrinkWrap: true,
                             itemBuilder: (context, index) => productItem(
-                              id:state.home.amazingProducts[index].id,
-                                  imagePath:
-                                      state.home.amazingProducts[index].image,
-                                  price:
-                                      state.home.amazingProducts[index].price,
-                                  productName:
-                                      state.home.amazingProducts[index].title,
-                                  specialExpiration: state.home
-                                      .amazingProducts[index].specialExpiration,
-                                  discount: state
-                                      .home.amazingProducts[index].discount,
+                           product: state.home.amazingProducts[index],
                                 )),
                       ),
                       VerticalText()

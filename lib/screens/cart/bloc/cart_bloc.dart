@@ -19,7 +19,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         }
         
          else if (event is RemoveFromCartEvent) {
-          emit(CartLoadingState());
+        
 
           await _iCartRepository
               .removeFromCart(productId: event.productId)
@@ -27,15 +27,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         } 
         
         else if (event is DeleteFromCartEvent) {
-          emit(CartLoadingState());
-
+       
           await _iCartRepository
               .deleteFromCart(productId: event.productId)
               .then((value) => emit(CartItemDeleted(value)));
         } 
         
         else if (event is AddToCartEvent) {
-          emit(CartLoadingState());
+          
           await _iCartRepository
               .addToCart(productId: event.productId)
               .then((value) => emit(CartItemAddedState(value)));

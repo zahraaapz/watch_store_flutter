@@ -1,6 +1,8 @@
 class CartModel {
   int id;
   int productId;
+  bool countLoading;
+  bool deleteLoading;
   String product;
   int count;
 final image;
@@ -11,6 +13,8 @@ final price;
       required this.image,
       required this.price,
       required this.product,
+      this.countLoading=false,
+      this.deleteLoading=false,
       required this.count});
 
   factory CartModel.fromJson(Map<String, dynamic> json) {

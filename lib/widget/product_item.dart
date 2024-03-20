@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/components/extention.dart';
+import 'package:watch_store_flutter/data/model/product.dart';
 import 'package:watch_store_flutter/screens/product_single/product_single_screen.dart';
 import 'package:watch_store_flutter/utils/format_time.dart';
 import '../components/text_style.dart';
@@ -10,23 +11,10 @@ import '../res/dimens.dart';
 
 class productItem extends StatefulWidget {
   const productItem({
-    super.key,
-    required this.productName,
-    required this.price,
-    required this.imagePath,
-    this.specialExpiration = '',
-    this.discount = 0,
-    this.oldPrice = 0,
-    required this.id,
+required this.product
   });
 
-  final String productName;
-  final int price;
-  final id;
-  final int oldPrice;
-  final int discount;
-  final specialExpiration;
-  final imagePath;
+final Product product;
 
   @override
   State<productItem> createState() => _productItemState();
@@ -39,9 +27,9 @@ class _productItemState extends State<productItem> {
   @override
   void initState() {
     timer = Timer(duration, () {});
-    if (widget.specialExpiration != '') {
+    if (widget.product.specialExpiration != '') {
       DateTime now = DateTime.now();
-      DateTime exp = DateTime.parse(widget.specialExpiration);
+      DateTime exp = DateTime.parse(widget.product.specialExpiration);
 
       duration = now.difference(exp).abs();
       inSeconds = duration.inSeconds;
@@ -72,7 +60,7 @@ class _productItemState extends State<productItem> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ProductSingleScreen(id: widget.id),
+              builder: (context) => ProductSingleScreen(id: widget.product.id),
             ));
       },
       child: Container(
@@ -86,13 +74,13 @@ class _productItemState extends State<productItem> {
         child: Column(
           children: [
             Image.network(
-              widget.imagePath,
+              widget.product.image,
               scale: 2.4,
             ),
             Align(
               alignment: Alignment.centerRight,
               child: Text(
-                widget.productName,
+                widget.product.title,
                 style: MyStyles.productTite,
               ),
             ),
@@ -104,25 +92,25 @@ class _productItemState extends State<productItem> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      ' ${widget.price.separateWithComma} تومان ',
+                      ' ${widget.product.price.separateWithComma} تومان ',
                       style: MyStyles.title,
                     ),
                     Visibility(
-                        visible: widget.discount > 0 ? true : false,
+                        visible: widget.product.discount > 0 ? true : false,
                         child: Text(
-                          '${widget.oldPrice.separateWithComma}',
+                          '${widget.product.discountPrice.separateWithComma}',
                           style: MyStyles.oldPrice,
                         )),
                   ],
                 ),
                 Visibility(
-                  visible: widget.discount > 0 ? true : false,
+                  visible: widget.product.discount > 0 ? true : false,
                   child: Container(
                     padding: const EdgeInsets.all(MyDimens.small * .5),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(60),
                         color: Colors.red),
-                    child: Text('${widget.discount} %'),
+                    child: Text('${widget.product.discount} %'),
                   ),
                 )
               ],

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:watch_store_flutter/widget/product_item.dart';
-
 import '../res/dimens.dart';
 
 class TagList extends StatefulWidget {

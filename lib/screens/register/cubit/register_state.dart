@@ -7,7 +7,7 @@ final class RegisterInitial extends RegisterState {}
 final class LoadingState extends RegisterState {}
 final class ErrorState extends RegisterState {}
 final class IntialImageState extends RegisterState {
-    File image;
+  final  File image;
     IntialImageState({required this.image});
 }
 final class CancelImageState extends RegisterState {}

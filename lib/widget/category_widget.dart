@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:watch_store_flutter/components/extention.dart';
-
 import '../components/text_style.dart';
-
 import '../res/dimens.dart';
 
 

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:watch_store_flutter/screens/home/home_screen.dart';
-
+import 'package:watch_store_flutter/screens/profile_screen.dart';
 import '../../data/product_repo_test.dart';
 import '../../gen/assets.gen.dart';
 import '../../widget/btmNav.dart';
 import '../cart/cart_screen.dart';
-import 'profile_screen.dart';
 
 class BtmNavScreenIndex {
   BtmNavScreenIndex._();

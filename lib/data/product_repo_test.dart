@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:watch_store_flutter/data/conf/remote_conf.dart';
 import 'package:watch_store_flutter/data/constant.dart';
 import 'package:watch_store_flutter/data/repo/product_repo.dart';

@@ -27,13 +27,7 @@ class ProductGridView extends StatelessWidget {
             itemBuilder: (context, index) {
               
               return productItem(
-                id:state.productList[index].id,
-                  productName: state.productList[index].title,
-                   price: state.productList[index].price,
-                  imagePath: state.productList[index].image,
-                  oldPrice: state.productList[index].discountPrice,
-                  discount: state.productList[index].discount,
-                  specialExpiration: state.productList[index].specialExpiration,
+               product:state.productList[index] ,
                   );
             },
           ),
