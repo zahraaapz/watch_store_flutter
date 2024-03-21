@@ -6,6 +6,7 @@ import '../model/cart.dart';
 
 abstract class ICartRepository {
   Future<List<CartModel>> getUserCart();
+  Future<List<CartModel>> getOrder();
   Future<List<CartModel>> addToCart({required int productId});
   Future<int> countCartItem();
   Future<List<CartModel>> removeFromCart({required int productId});
@@ -43,4 +44,7 @@ class CartRepo implements ICartRepository {
   Future<int> countCartItem() {
     return _iCartDataSrc.countCartItem().then((value) => count.value = value);
   }
+  
+  @override
+  Future<List<CartModel>> getOrder() =>_iCartDataSrc.getOrder();
 }

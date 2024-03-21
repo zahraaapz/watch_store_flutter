@@ -20,19 +20,17 @@ class _ShoppingCartItemState extends State<ShoppingCartItem> {
   Widget build(BuildContext context) {
     final cartBloc = BlocProvider.of<CartBloc>(context);
     return SurfaceContainer(
-      child: widget.cartModel.deleteLoading
-          ? const LinearProgressIndicator()
-          : Row(
+      child: Row(
               children: [
                 Expanded(
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
-                      widget.cartModel.product,
+                   FittedBox(child: Text(
+                      widget.cartModel.product,textDirection: TextDirection.rtl,
                       style: MyStyles.productTite.copyWith(fontSize: 14),
-                    ),
+                    )),
                     Divider(
                       indent: 12,
                     ),

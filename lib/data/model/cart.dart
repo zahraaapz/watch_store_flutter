@@ -5,20 +5,23 @@ class CartModel {
   bool deleteLoading;
   String product;
   int count;
-final image;
-final price;
+  final image;
+  final price;
+  final discountPrice;
   CartModel(
       {required this.id,
       required this.productId,
       required this.image,
       required this.price,
+      required this.discountPrice,
       required this.product,
-      this.countLoading=false,
-      this.deleteLoading=false,
+      this.countLoading = false,
+      this.deleteLoading = false,
       required this.count});
 
   factory CartModel.fromJson(Map<String, dynamic> json) {
     return CartModel(
+      discountPrice: json['discount_price'],
       id: json['id'],
       image: json['image'],
       price: json['price'],

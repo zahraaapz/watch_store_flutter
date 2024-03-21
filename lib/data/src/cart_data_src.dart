@@ -8,6 +8,7 @@ abstract class ICartDataSrc {
   Future<List<CartModel>> addToCart({required int productId});
   Future<List<CartModel>> removeFromCart({required int productId});
   Future<List<CartModel>> deleteFromCart({required int productId});
+  Future<List<CartModel>> getOrder();
   Future<int> countCartItem();
 
 }
@@ -59,6 +60,7 @@ class CartRemoteDataSrc implements ICartDataSrc {
     
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
     for (var ele in (response.data['data']['user_cart']) as List) {
+      print(response.data['data']['user_cart'].toString());
       cartlist.add(CartModel.fromJson(ele));
     }
 
@@ -88,5 +90,20 @@ class CartRemoteDataSrc implements ICartDataSrc {
 final res=await httpClient.post(Endpoints.userCart);
  HTTPResponseValidator.isValidStatusCode(res.statusCode ?? 0);
 return (res.data['data']['user_cart'] as List).length;
+  }
+  
+  @override
+  Future<List<CartModel>> getOrder()async {
+  List<CartModel> cartlist = [];
+
+
+    final response = await httpClient.post(Endpoints.getOrder);
+    HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
+
+    for (var ele in (response.data['data']['order_details'])) {
+      cartlist.add(CartModel.fromJson(ele));
+    }
+
+    return cartlist;
   }
 }

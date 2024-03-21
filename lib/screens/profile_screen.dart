@@ -79,7 +79,10 @@ class ProfileScreen extends StatelessWidget {
                     svgIcon: Assets.svg.phone,
                     title: '031997845',
                   ),
-                  SurfaceContainer(child: Text('قوانین'))
+                  SizedBox(height: 50,child: SurfaceContainer(child: Padding(
+                    padding: const EdgeInsets.all(7.0),
+                    child: const Text('قوانین',style: MyStyles.avatarText,textAlign: TextAlign.end,),
+                  )))
                 ],
               ),
             ),
