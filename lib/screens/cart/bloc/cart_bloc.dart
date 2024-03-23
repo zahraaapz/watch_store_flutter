@@ -11,7 +11,10 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc(this._iCartRepository) : super(CartInitialState()) {
     on<CartEvent>((event, emit) async {
       try {
+       
         if (event is CartInitEvent) {
+          final total=await _iCartRepository.getTotalPrice();
+         emit(CartItemTotalPriceState(total));
           emit(CartLoadingState());
           final cartlist = await _iCartRepository.getUserCart();
         

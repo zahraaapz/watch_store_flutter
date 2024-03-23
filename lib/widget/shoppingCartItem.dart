@@ -9,7 +9,7 @@ import '../gen/assets.gen.dart';
 
 class ShoppingCartItem extends StatefulWidget {
   const ShoppingCartItem({required this.cartModel});
- final CartModel cartModel;
+  final CartModel cartModel;
 
   @override
   State<ShoppingCartItem> createState() => _ShoppingCartItemState();

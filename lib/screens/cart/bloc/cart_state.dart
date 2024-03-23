@@ -7,6 +7,13 @@ sealed class CartState extends Equatable {
   List<Object> get props => [];
 }
 
+final class CartItemTotalPriceState extends CartState {
+  
+final totalPrice;
+  const CartItemTotalPriceState(this.totalPrice);
+}
+
+
 final class CartLoadingState extends CartState {}
 
 final class CartInitialState extends CartState {}

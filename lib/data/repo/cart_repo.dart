@@ -6,7 +6,7 @@ import '../model/cart.dart';
 
 abstract class ICartRepository {
   Future<List<CartModel>> getUserCart();
-  Future<List<CartModel>> getOrder();
+  Future<int> getTotalPrice();
   Future<List<CartModel>> addToCart({required int productId});
   Future<int> countCartItem();
   Future<List<CartModel>> removeFromCart({required int productId});
@@ -46,5 +46,5 @@ class CartRepo implements ICartRepository {
   }
   
   @override
-  Future<List<CartModel>> getOrder() =>_iCartDataSrc.getOrder();
+  Future<int> getTotalPrice() =>_iCartDataSrc.getTotalPrice();
 }
