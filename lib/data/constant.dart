@@ -14,7 +14,12 @@ class Endpoints {
   static const removeFromCart = "$baseUrl/remove_from_cart";
   static const deleteFromCart = "$baseUrl/delete_from_cart";
   static const totalPrice = "$baseUrl/total_cart_price";
-  static const getOrder = "$baseUrl/user_processing_orders";
+
+  static const getProcessingOrder = "$baseUrl/user_processing_orders";
+  static const getCanceledOrder = "$baseUrl/user_cancelled_orders";
+  static const getAddress = "$baseUrl/user_addresses";
+  static const getRecievedOrder = "$baseUrl/user_received_orders";
+  static const getUserInfo = "$baseUrl/profile";
 }
 
 class ProductSortRoutes {
