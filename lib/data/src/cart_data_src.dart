@@ -79,7 +79,6 @@ class CartRemoteDataSrc implements ICartDataSrc {
   Future<String> payCart()async {
  final res=await httpClient.post(Endpoints.payment);
  HTTPResponseValidator.isValidStatusCode(res.statusCode ?? 0);
-
  return res.data['action'];
   }
 }
