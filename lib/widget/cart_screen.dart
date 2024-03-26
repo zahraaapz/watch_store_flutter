@@ -18,7 +18,7 @@ class ProfileItem extends StatelessWidget {
           children: [
             Expanded(
                 child: Text(
-              title,
+              title.toString(),
               style: MyStyles.title,
               softWrap: true,
               maxLines: 2,

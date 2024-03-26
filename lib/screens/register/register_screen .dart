@@ -13,6 +13,7 @@ import 'package:watch_store_flutter/widget/avatar.dart';
 import 'package:watch_store_flutter/widget/main_button.dart';
 import '../../components/text_style.dart';
 import '../../res/string.dart';
+import '../../utils/convert_address.dart';
 import '../../widget/app_text_field.dart';
 import '../../widget/registerAppBar.dart';
 
@@ -150,21 +151,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
 
-  Future<String> getAddress(double lng, double lat) async {
 
-    String add = '';
-    await Dio()
-        .get("https://api.neshan.org/v5/reverse?lat=$lat&lng=$lng",
-            options: Options(headers: {
-             "Api-Key": 'service.af60e2291dd3468f9cb9637df3818412'
-            }))
-        .then((val) {
-                print(val.toString());
-                add=val.data['formatted_address'];
-        });
-
-    return add;
-  }
 
 Future<dynamic> galleryOrcamera(
       BuildContext context, Size size, BuildContext contxt) {

@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:watch_store_flutter/data/constant.dart';
 import 'package:watch_store_flutter/data/model/cart.dart';
 import 'package:watch_store_flutter/utils/response_validator.dart';
+import 'package:watch_store_flutter/utils/shared_pref_constant.dart';
+import 'package:watch_store_flutter/utils/shared_preference.dart';
 
 abstract class ICartDataSrc {
   Future<List<CartModel>> getUserCart();
@@ -55,7 +57,7 @@ class CartRemoteDataSrc implements ICartDataSrc {
 
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
     for (var ele in (response.data['data']['user_cart']) as List) {
-      print(response.data['data']['user_cart'].toString());
+     // print(response.data['data']['user_cart'].toString());
       cartlist.add(CartModel.fromJson(ele));
     }
 
@@ -92,7 +94,7 @@ class CartRemoteDataSrc implements ICartDataSrc {
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
 
     totalPrice = response.data['data']['cart_total_price'];
-   print(totalPrice.toString());
+   //print(totalPrice.toString());
     return totalPrice;
   }
 }

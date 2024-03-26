@@ -49,6 +49,6 @@ abstract class MyStrings{
   static const String termOfService = "قوانین و مقررات";
   static const String inProccess = "درحال پردازش";
   static const String cancelled = "لغو شده";
-  static const String delivered = "تحویل شده";
+  static const String delivered = "تحویل داده شده";
  
 }

@@ -4,14 +4,13 @@ import 'package:dio/dio.dart';
 import 'package:watch_store_flutter/data/constant.dart';
 import 'package:watch_store_flutter/utils/shared_pref_constant.dart';
 import 'package:watch_store_flutter/utils/shared_preference.dart';
-
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial()) {
     emit(LoggedINState());
   }
-
+//"token":"795|L9f2Z4Zw7D0hmxkbwlSX86WKOqNMosI8MZcwOpH8"
   sensSms(String mobile) async {
     emit(LoadingState());
 
