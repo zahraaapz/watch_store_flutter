@@ -13,12 +13,11 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       try {
        
         if (event is CartInitEvent) {
-          final total=await _iCartRepository.getTotalPrice();
-         emit(CartItemTotalPriceState(total));
+         
           emit(CartLoadingState());
-          final cartlist = await _iCartRepository.getUserCart();
+          final userCart = await _iCartRepository.getUserCart();
         
-          emit(CartLoadedState(cartlist));
+          emit(CartLoadedState(userCart));
         }
         
          else if (event is RemoveFromCartEvent) {
@@ -27,6 +26,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           await _iCartRepository
               .removeFromCart(productId: event.productId)
               .then((value) => emit(CartItemRemovedState(value)));
+        } 
+        
+         else if (event is PayEvent) {
+        
+
+          await _iCartRepository
+              .payCart()
+              .then((value) => emit(ReceivePayLinkState(value)));
         } 
         
         else if (event is DeleteFromCartEvent) {

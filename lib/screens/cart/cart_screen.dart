@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:watch_store_flutter/components/button_style.dart';
 import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/components/text_style.dart';
 import 'package:watch_store_flutter/data/model/cart.dart';
-import 'package:watch_store_flutter/data/repo/cart_repo.dart';
 import 'package:watch_store_flutter/res/color.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
 import 'package:watch_store_flutter/res/string.dart';
@@ -75,13 +75,13 @@ class CartScreen extends StatelessWidget {
                 BlocBuilder<CartBloc, CartState>(
                   builder: (context, state) {
                     if (state is CartLoadedState) {
-                      return CartList(list: state.cartList);
+                      return CartList(list: state.cartList.cartList);
                     } else if (state is CartItemAddedState) {
-                      return CartList(list: state.cartList);
+                      return CartList(list: state.cartList.cartList);
                     } else if (state is CartItemDeleted) {
-                      return CartList(list: state.cartList);
+                      return CartList(list: state.cartList.cartList);
                     } else if (state is CartItemRemovedState) {
-                      return CartList(list: state.cartList);
+                      return CartList(list: state.cartList.cartList);
                     } else if (state is CartErrorState) {
                       return Center(child: Text(state.e));
                     } else if (state is CartLoadingState) {
@@ -102,22 +102,25 @@ class CartScreen extends StatelessWidget {
                     left: 0,
                     child: BlocConsumer<CartBloc, CartState>(
                       listener: (contxt, state) {
-                        if (state is CartItemTotalPriceState) {
-                          t = state.totalPrice;
-                        }
+                       
                       },
                       builder: (contxt, state) {
-                        return Container(
-                          padding: const EdgeInsets.only(right:18),
-                          color: MyColors.surfaceColor,
-                          width: 410,
-                          height: 50,
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text('قیمت: ${t.separateWithComma}',
-                                    style: MyStyles.caption)
-                              ]),
+                        return Row(
+                          children: [
+                            ElevatedButton(onPressed: (){}, child: Text('پرداخت'),style:AppButtonStyle.mainButtonStyle,),
+                            Container(
+                              padding: const EdgeInsets.only(right:18),
+                              color: MyColors.surfaceColor,
+                              width: 410,
+                              height: 50,
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text('قیمت: ${t.separateWithComma}',
+                                        style: MyStyles.caption)
+                                  ]),
+                            ),
+                          ],
                         );
                       },
                     ))

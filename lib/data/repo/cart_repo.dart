@@ -5,12 +5,12 @@ import 'package:watch_store_flutter/data/src/cart_data_src.dart';
 import '../model/cart.dart';
 
 abstract class ICartRepository {
-  Future<List<CartModel>> getUserCart();
-  Future<int> getTotalPrice();
-  Future<List<CartModel>> addToCart({required int productId});
+  Future<UserCart> getUserCart();
+  Future<UserCart> addToCart({required int productId});
   Future<int> countCartItem();
-  Future<List<CartModel>> removeFromCart({required int productId});
-  Future<List<CartModel>> deleteFromCart({required int productId});
+    Future<String> payCart();
+  Future<UserCart> removeFromCart({required int productId});
+  Future<UserCart> deleteFromCart({required int productId});
 }
 
 final cartRepsitory = CartRepo(CartRemoteDataSrc(DioManager.dio));
@@ -20,24 +20,24 @@ class CartRepo implements ICartRepository {
   ValueNotifier<int> count = ValueNotifier(0);
   CartRepo(this._iCartDataSrc);
   @override
-  Future<List<CartModel>> addToCart({required int productId}) =>
+  Future<UserCart> addToCart({required int productId}) =>
       _iCartDataSrc.addToCart(productId: productId).then((value) {
-        count.value = value.length;
+        count.value = value.cartList.length;
         return value;
       });
 
   @override
-  Future<List<CartModel>> deleteFromCart({required int productId}) =>
+  Future<UserCart> deleteFromCart({required int productId}) =>
       _iCartDataSrc.deleteFromCart(productId: productId).then((value) {
-        count.value = value.length;
+        count.value = value.cartList.length;
         return value;
       });
 
   @override
-  Future<List<CartModel>> getUserCart() => _iCartDataSrc.getUserCart();
+  Future<UserCart> getUserCart() => _iCartDataSrc.getUserCart();
 
   @override
-  Future<List<CartModel>> removeFromCart({required int productId}) =>
+  Future<UserCart> removeFromCart({required int productId}) =>
       _iCartDataSrc.removeFromCart(productId: productId);
 
   @override
@@ -45,6 +45,7 @@ class CartRepo implements ICartRepository {
     return _iCartDataSrc.countCartItem().then((value) => count.value = value);
   }
   
+ 
   @override
-  Future<int> getTotalPrice() =>_iCartDataSrc.getTotalPrice();
+  Future<String> payCart() =>_iCartDataSrc.payCart();
 }

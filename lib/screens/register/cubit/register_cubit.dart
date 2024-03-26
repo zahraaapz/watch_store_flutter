@@ -8,7 +8,7 @@ import 'package:meta/meta.dart';
 import 'package:watch_store_flutter/data/constant.dart';
 import 'package:watch_store_flutter/utils/shared_pref_constant.dart';
 import 'package:watch_store_flutter/utils/shared_preference.dart';
-import '../../../data/model/model.dart';
+import '../../../data/model/user.dart';
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {

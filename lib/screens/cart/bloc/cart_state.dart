@@ -7,33 +7,36 @@ sealed class CartState extends Equatable {
   List<Object> get props => [];
 }
 
-final class CartItemTotalPriceState extends CartState {
-  
-final totalPrice;
-  const CartItemTotalPriceState(this.totalPrice);
-}
+
 
 
 final class CartLoadingState extends CartState {}
+
+
+final class ReceivePayLinkState extends CartState {
+  final String url;
+
+  const ReceivePayLinkState(this.url);
+}
 
 final class CartInitialState extends CartState {}
 
 final class CartCountState extends CartState {}
 
 final class CartItemRemovedState extends CartState {
-  final List<CartModel> cartList;
+  final UserCart cartList;
 
   const CartItemRemovedState(this.cartList);
 }
 
 final class CartItemAddedState extends CartState {
-  final List<CartModel> cartList;
+  final UserCart cartList;
 
   const CartItemAddedState(this.cartList);
 }
 
 final class CartItemDeleted extends CartState {
-  final List<CartModel> cartList;
+  final UserCart cartList;
 
   const CartItemDeleted(this.cartList);
 }
@@ -45,7 +48,7 @@ final class CartErrorState extends CartState {
 }
 
 final class CartLoadedState extends CartState {
-  final List<CartModel> cartList;
+  final UserCart cartList;
 
   const CartLoadedState(this.cartList);
 }

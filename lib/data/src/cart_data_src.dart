@@ -2,16 +2,15 @@ import 'package:dio/dio.dart';
 import 'package:watch_store_flutter/data/constant.dart';
 import 'package:watch_store_flutter/data/model/cart.dart';
 import 'package:watch_store_flutter/utils/response_validator.dart';
-import 'package:watch_store_flutter/utils/shared_pref_constant.dart';
-import 'package:watch_store_flutter/utils/shared_preference.dart';
+
 
 abstract class ICartDataSrc {
-  Future<List<CartModel>> getUserCart();
-  Future<List<CartModel>> addToCart({required int productId});
-  Future<List<CartModel>> removeFromCart({required int productId});
-  Future<List<CartModel>> deleteFromCart({required int productId});
-  Future<int> getTotalPrice();
+  Future<UserCart> getUserCart();
+  Future<UserCart> addToCart({required int productId});
+  Future<UserCart> removeFromCart({required int productId});
+  Future<UserCart> deleteFromCart({required int productId});
   Future<int> countCartItem();
+  Future<String> payCart();
 }
 
 class CartRemoteDataSrc implements ICartDataSrc {
@@ -20,63 +19,51 @@ class CartRemoteDataSrc implements ICartDataSrc {
   CartRemoteDataSrc(this.httpClient);
 
   @override
-  Future<List<CartModel>> addToCart({required int productId}) async {
-    List<CartModel> cartlist = [];
+  Future<UserCart> addToCart({required int productId}) async {
+    
 
     final response = await httpClient
         .post(Endpoints.addToCart, data: {'product_id': productId});
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
-
-    for (var ele in (response.data['data']['user_cart'])) {
-      cartlist.add(CartModel.fromJson(ele));
-    }
-
-    return cartlist;
+    return UserCart.fromJson(response.data['data']);
   }
 
   @override
-  Future<List<CartModel>> deleteFromCart({required int productId}) async {
-    List<CartModel> cartlist = [];
+  Future<UserCart> deleteFromCart({required int productId}) async {
+
 
     final response = await httpClient
         .post(Endpoints.deleteFromCart, data: {'product_id': productId});
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
 
-    for (var ele in (response.data['data']['user_cart'])) {
-      cartlist.add(CartModel.fromJson(ele));
-    }
 
-    return cartlist;
+    return  UserCart.fromJson(response.data['data']);
+
   }
 
   @override
-  Future<List<CartModel>> getUserCart() async {
-    List<CartModel> cartlist = [];
+  Future<UserCart> getUserCart() async {
+
 
     final response = await httpClient.post(Endpoints.userCart);
 
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
-    for (var ele in (response.data['data']['user_cart']) as List) {
-     // print(response.data['data']['user_cart'].toString());
-      cartlist.add(CartModel.fromJson(ele));
-    }
 
-    return cartlist;
+   return UserCart.fromJson(response.data['data']);
+
   }
 
   @override
-  Future<List<CartModel>> removeFromCart({required int productId}) async {
-    List<CartModel> cartlist = [];
+  Future<UserCart> removeFromCart({required int productId}) async {
+
 
     final response = await httpClient
         .post(Endpoints.removeFromCart, data: {'product_id': productId});
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
+    return UserCart.fromJson(response.data['data']);
 
-    for (var ele in (response.data['data']['user_cart'])) {
-      cartlist.add(CartModel.fromJson(ele));
-    }
 
-    return cartlist;
+   
   }
 
   @override
@@ -86,15 +73,13 @@ class CartRemoteDataSrc implements ICartDataSrc {
     return (res.data['data']['user_cart'] as List).length;
   }
 
+
+  
   @override
-  Future<int> getTotalPrice() async {
-    int totalPrice = 0;
+  Future<String> payCart()async {
+ final res=await httpClient.post(Endpoints.payment);
+ HTTPResponseValidator.isValidStatusCode(res.statusCode ?? 0);
 
-    final response = await httpClient.post(Endpoints.totalPrice);
-    HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
-
-    totalPrice = response.data['data']['cart_total_price'];
-   //print(totalPrice.toString());
-    return totalPrice;
+ return res.data['action'];
   }
 }
