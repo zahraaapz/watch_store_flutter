@@ -8,7 +8,7 @@ import 'package:watch_store_flutter/widget/surface_container.dart';
 import '../gen/assets.gen.dart';
 
 class ShoppingCartItem extends StatefulWidget {
-  const ShoppingCartItem({required this.cartModel});
+  const ShoppingCartItem({super.key, required this.cartModel});
   final CartModel cartModel;
 
   @override
@@ -31,7 +31,9 @@ class _ShoppingCartItemState extends State<ShoppingCartItem> {
                       widget.cartModel.product,textDirection: TextDirection.rtl,
                       style: MyStyles.productTite.copyWith(fontSize: 14),
                     )),
-                    Divider(
+                    Text(widget.cartModel.price.toString(),style: MyStyles.caption,),
+                    Text(widget.cartModel.discountPrice.toString(),style: MyStyles.caption.copyWith(color: Colors.blue),),
+                    const Divider(
                       indent: 12,
                     ),
                     Row(

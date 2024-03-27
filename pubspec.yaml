@@ -46,6 +46,7 @@ dependencies:
   image_cropper: ^5.0.1
   flutter_osm_plugin: ^0.70.4
   equatable: ^2.0.5
+  url_launcher: ^6.2.5
 
 dev_dependencies:
   flutter_test:

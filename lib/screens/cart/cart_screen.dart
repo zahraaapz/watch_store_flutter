@@ -1,8 +1,11 @@
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:watch_store_flutter/components/button_style.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/components/text_style.dart';
 import 'package:watch_store_flutter/data/model/cart.dart';
@@ -15,8 +18,8 @@ import '../../gen/assets.gen.dart';
 import '../../widget/shoppingCartItem.dart';
 
 class CartScreen extends StatelessWidget {
-  CartScreen({super.key});
-  int t = 0;
+  const CartScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<CartBloc>(context).add(CartInitEvent());
@@ -87,12 +90,7 @@ class CartScreen extends StatelessWidget {
                     } else if (state is CartLoadingState) {
                       return const LinearProgressIndicator();
                     } else {
-                      return ElevatedButton(
-                          onPressed: () {
-                            BlocProvider.of<CartBloc>(context)
-                                .add(CartInitEvent());
-                          },
-                          child: Text('تلاش محدد', style: MyStyles.caption));
+                   return const LinearProgressIndicator();
                     }
                   },
                 ),
@@ -101,27 +99,63 @@ class CartScreen extends StatelessWidget {
                     right: 0,
                     left: 0,
                     child: BlocConsumer<CartBloc, CartState>(
-                      listener: (contxt, state) {
-                       
+                      listener: (contxt, state) async {
+                        if (state is ReceivePayLinkState) {
+                          final url = Uri.parse(state.url);
+                          if (!await launchUrl(url)) {
+                            throw Exception('not launch');
+                          }
+                        }
                       },
                       builder: (contxt, state) {
-                        return Row(
-                          children: [
-                            ElevatedButton(onPressed: (){}, child: Text('پرداخت'),style:AppButtonStyle.mainButtonStyle,),
-                            Container(
-                              padding: const EdgeInsets.only(right:18),
-                              color: MyColors.surfaceColor,
-                              width: 410,
-                              height: 50,
+                        UserCart? userCart;
+                        switch (state.runtimeType) {
+                          case CartLoadedState:
+                          case CartItemAddedState:
+                          case CartItemDeleted:
+                          case CartItemRemovedState:
+                            userCart = (state as dynamic).userCart;
+
+                            break;
+                          case CartErrorState:
+                            return const Text('Error');
+                          case CartLoadingState:
+                            return const LinearProgressIndicator();
+                          default:
+                            return const SizedBox();
+                        }
+                        return Visibility(
+                            visible: (userCart!.cartTotalPrice) > 0,
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              margin: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: MyColors.surfaceColor,
+                              ),
                               child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text('قیمت: ${t.separateWithComma}',
-                                        style: MyStyles.caption)
-                                  ]),
-                            ),
-                          ],
-                        );
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  ElevatedButton(
+                                      onPressed: () {
+                                        BlocProvider.of<CartBloc>(context)
+                                            .add(PayEvent());
+                                      },
+                                      child: const Text('پرداخت')),
+                                  Column(
+                                    children: [
+                                      Text("قیمت: ${userCart.cartTotalPrice.separateWithComma} تومان"),
+                                      Visibility(
+                                          visible: userCart
+                                                  .totalWithoutDiscountPrice !=
+                                              userCart.cartTotalPrice,
+                                          child: Text("قیمت: ${userCart.totalWithoutDiscountPrice.separateWithComma} تومان")),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ));
                       },
                     ))
               ],
@@ -134,8 +168,8 @@ class CartScreen extends StatelessWidget {
 }
 
 class CartList extends StatelessWidget {
-  CartList({super.key, required this.list});
-  List<CartModel> list;
+  const CartList({super.key, required this.list});
+ final List<CartModel> list;
   @override
   Widget build(BuildContext context) {
     return Expanded(
