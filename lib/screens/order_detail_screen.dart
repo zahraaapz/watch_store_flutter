@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/components/text_style.dart';
 import 'package:watch_store_flutter/data/model/order.dart';
 import 'package:watch_store_flutter/screens/profile/bloc/profile_bloc.dart';
@@ -55,8 +56,8 @@ class OrderDetailScreen extends StatelessWidget {
 }
 
 class DetailsSurface extends StatelessWidget {
-  const DetailsSurface({super.key, this.list});
-  final list;
+  const DetailsSurface({super.key,required this.list});
+  final List<OrderDetail> list;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -78,16 +79,14 @@ class DetailsSurface extends StatelessWidget {
                       style: MyStyles.caption,
                       textDirection: TextDirection.rtl,
                     ),
-                    Text(list[index].price.separateWithComma.toString(),
+                    Text(
+                      "قیمت: ${list[index].discountPrice.separateWithComma} تومان",
                         style: MyStyles.caption),
                     Visibility(
                         visible:
                             (list[index].discountPrice != list[index].price),
                         child: Text(
-                            list[index]
-                                .discountPrice
-                                .separateWithComma
-                                .toString(),
+                          "قیمت: ${list[index].price.separateWithComma} تومان",
                             style:
                                 MyStyles.caption.copyWith(color: Colors.blue))),
                   ],
