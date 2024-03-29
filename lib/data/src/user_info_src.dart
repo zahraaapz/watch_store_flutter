@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:watch_store_flutter/data/constant.dart';
-import 'package:watch_store_flutter/data/model/Order.dart';
 import 'package:watch_store_flutter/data/model/user_info.dart';
 import 'package:watch_store_flutter/data/model/address.dart';
 import '../../utils/response_validator.dart';
+import '../model/order.dart';
 
 abstract class IUserInfoDataSrc {
   Future<UserInfo> getUserInfo();
   Future<Addres> getUserAddress();
-  Future<List<OrderDetail>> getReceivedOrder();
-  Future<List<OrderDetail>> getCanceledOrder();
-  Future<List<OrderDetail>> getProcessingOrder();
+  Future<List<Order>> getReceivedOrder();
+  Future<List<Order>> getCanceledOrder();
+  Future<List<Order>> getProcessingOrder();
 }
 
 class UserInfoRemote implements IUserInfoDataSrc {
@@ -19,55 +19,49 @@ class UserInfoRemote implements IUserInfoDataSrc {
   @override
   Future<UserInfo> getUserInfo() async {
     UserInfo userInfo;
-    
     final response = await httpClient.post(Endpoints.getUserInfo);
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
     userInfo = UserInfo.fromJson(response.data['data']['user_info']);
- 
-   
-   
-  return userInfo;
+    return userInfo;
   }
 
   @override
-  Future<List<OrderDetail>> getCanceledOrder()async {
-   List<OrderDetail>order=[];
+  Future<List<Order>> getCanceledOrder() async {
+    List<Order> order = [];
 
     final response = await httpClient.post(Endpoints.getCanceledOrder);
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
     print(response.data.toString());
-    response.data.forEach((e){
-      
-      order.add(OrderDetail.fromJson(e));
+    response.data['data'].forEach((e) {
+      order.add(Order.fromJson(e));
     });
- 
-  
-   return order;
+
+    return order;
   }
 
   @override
-  Future<List<OrderDetail>> getProcessingOrder()async {
-   List<OrderDetail>order=[];
+  Future<List<Order>> getProcessingOrder() async {
+    List<Order> order = [];
     final response = await httpClient.post(Endpoints.getProcessingOrder);
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
-       print('lzl'+response.data.toString());
-    // response.data.forEach((e){
-   
-    //   order.add(OrderDetail.fromJson(e));
-    // });
-   return order;
+    response.data['data'].forEach((e) {
+      order.add(Order.fromJson(e));
+    });
+  print(response.data.toString());
+
+    return order;
   }
 
   @override
-  Future<List<OrderDetail>> getReceivedOrder()async {
-   List<OrderDetail>order=[];
+  Future<List<Order>> getReceivedOrder() async {
+    List<Order> order = [];
     final response = await httpClient.post(Endpoints.getRecievedOrder);
     HTTPResponseValidator.isValidStatusCode(response.statusCode ?? 0);
-    response.data.forEach((e){
-   
-      order.add(OrderDetail.fromJson(e));
+    response.data['data'].forEach((e) {
+      order.add(Order.fromJson(e));
     });
-   return order;
+    return order;
+    
   }
 
   @override

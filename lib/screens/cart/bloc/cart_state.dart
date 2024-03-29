@@ -24,31 +24,31 @@ final class CartInitialState extends CartState {}
 final class CartCountState extends CartState {}
 
 final class CartItemRemovedState extends CartState {
-  final UserCart cartList;
+  final UserCart userCart;
 
-  const CartItemRemovedState(this.cartList);
+  const CartItemRemovedState(this.userCart);
 }
 
 final class CartItemAddedState extends CartState {
-  final UserCart cartList;
+  final UserCart userCart;
 
-  const CartItemAddedState(this.cartList);
+  const CartItemAddedState(this.userCart);
 }
 
 final class CartItemDeleted extends CartState {
-  final UserCart cartList;
+  final UserCart userCart;
 
-  const CartItemDeleted(this.cartList);
+  const CartItemDeleted(this.userCart);
 }
 
 final class CartErrorState extends CartState {
   final String e;
 
-  CartErrorState(this.e);
+  const CartErrorState(this.e);
 }
 
 final class CartLoadedState extends CartState {
-  final UserCart cartList;
+  final UserCart userCart;
 
-  const CartLoadedState(this.cartList);
+  const CartLoadedState(this.userCart);
 }

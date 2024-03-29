@@ -98,29 +98,44 @@ class ProfileScreen extends StatelessWidget {
                               title: MyStrings.cancelled,
                               onTap: () {
                                 Navigator.push(
-                                    contxt,
+                                    context,
                                     MaterialPageRoute(
-                                      builder: (contxt) => OrderDetailScreen(),
+                                      builder: (context) => BlocProvider.value(
+                                          value: BlocProvider.of<ProfileBloc>(
+                                              contxt),
+                                          child: OrderDetailScreen(
+                                            event:CanceledOrderEvent(),
+                                          )),
                                     ));
-                              }),
-                          textTitle(
+                              }),  textTitle(
                               title: MyStrings.inProccess,
                               onTap: () {
                                 Navigator.push(
-                                    contxt,
+                                    context,
                                     MaterialPageRoute(
-                                      builder: (contxt) => OrderDetailScreen(),
+                                      builder: (context) => BlocProvider.value(
+                                          value: BlocProvider.of<ProfileBloc>(
+                                              contxt),
+                                          child: OrderDetailScreen(
+                                            event:ProcessingOrderEvent(),
+                                          )),
                                     ));
-                              }),
-                          textTitle(
+                              }),  textTitle(
                               title: MyStrings.delivered,
                               onTap: () {
                                 Navigator.push(
-                                    contxt,
+                                    context,
                                     MaterialPageRoute(
-                                      builder: (contxt) => OrderDetailScreen(),
+                                      builder: (context) => BlocProvider.value(
+                                          value: BlocProvider.of<ProfileBloc>(
+                                              contxt),
+                                          child: OrderDetailScreen(
+                                            event:ReceivedOrderEvent(),
+                                          )),
                                     ));
                               }),
+                       
+                       
                         ],
                       );
                     } else {

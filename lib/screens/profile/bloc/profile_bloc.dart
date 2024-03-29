@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:watch_store_flutter/data/model/order.dart';
 import 'package:watch_store_flutter/data/repo/user_info_repo.dart';
-import 'package:watch_store_flutter/data/model/Order.dart';
 import '../../../data/model/user_info.dart';
 
 part 'profile_event.dart';
@@ -21,15 +21,26 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           await iUserInfoRepo.getReceivedOrder().then((value) => emit(ReceivedOrderState(value)));
         }
         else if(event is CanceledOrderEvent){
-          await iUserInfoRepo.getCanceledOrder().then((value) => emit(ReceivedOrderState(value)));
+          
+                     await iUserInfoRepo.getCanceledOrder().then((value) => emit(CanceledOrderState(value)));
+
+         
+       
+          
         }
         else if(event is ProcessingOrderEvent){
-          await iUserInfoRepo.getProcessingOrder().then((value) => emit(ReceivedOrderState(value)));
+          try {
+            await iUserInfoRepo.getProcessingOrder().then((value) => emit(ProcessingOrderState (value)));
+          print('lzl');
+          } catch (e) {
+            emit(ProfileErrorState(e.toString()));
+
+          }
         }
 
 
       } catch (e) {
-        emit(ProfileErrorState());
+        emit(ProfileErrorState(e.toString()));
       }
     });
   }

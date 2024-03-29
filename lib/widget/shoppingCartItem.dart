@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/components/text_style.dart';
 import 'package:watch_store_flutter/data/model/cart.dart';
 import 'package:watch_store_flutter/screens/cart/bloc/cart_bloc.dart';
@@ -31,8 +32,8 @@ class _ShoppingCartItemState extends State<ShoppingCartItem> {
                       widget.cartModel.product,textDirection: TextDirection.rtl,
                       style: MyStyles.productTite.copyWith(fontSize: 14),
                     )),
-                    Text(widget.cartModel.price.toString(),style: MyStyles.caption,),
-                    Text(widget.cartModel.discountPrice.toString(),style: MyStyles.caption.copyWith(color: Colors.blue),),
+                    Text(widget.cartModel.price.separateWithComma.toString(),style: MyStyles.caption,),
+                    Text(widget.cartModel.discountPrice.separateWithComma.toString(),style: MyStyles.caption.copyWith(color: Colors.blue),),
                     const Divider(
                       indent: 12,
                     ),

@@ -8,20 +8,20 @@ sealed class ProfileState extends Equatable {
 }
 
 final class CanceledOrderState extends ProfileState {
-  final List<OrderDetail> orderList;
-  const CanceledOrderState(this.orderList);
+  final List<Order> order;
+  const CanceledOrderState(this.order);
 }
 
 final class ReceivedOrderState extends ProfileState {
-  final List<OrderDetail> orderList;
+  final List<Order> order;
 
-  const ReceivedOrderState(this.orderList);
+  const ReceivedOrderState(this.order);
 }
 
 final class ProcessingOrderState extends ProfileState {
-  final List<OrderDetail> orderList;
+  final List<Order> order;
 
-  const ProcessingOrderState(this.orderList);
+  const ProcessingOrderState(this.order);
 }
 
 final class ProfileInitial extends ProfileState {}
@@ -34,4 +34,8 @@ final class ProfileLoadedState extends ProfileState {
   const ProfileLoadedState(this.userInfo);
 }
 
-final class ProfileErrorState extends ProfileState {}
+final class ProfileErrorState extends ProfileState {
+  final String e;
+
+  ProfileErrorState(this.e);
+}

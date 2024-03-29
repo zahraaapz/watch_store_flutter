@@ -78,13 +78,13 @@ class CartScreen extends StatelessWidget {
                 BlocBuilder<CartBloc, CartState>(
                   builder: (context, state) {
                     if (state is CartLoadedState) {
-                      return CartList(list: state.cartList.cartList);
+                      return CartList(list: state.userCart.cartList);
                     } else if (state is CartItemAddedState) {
-                      return CartList(list: state.cartList.cartList);
+                      return CartList(list: state.userCart.cartList);
                     } else if (state is CartItemDeleted) {
-                      return CartList(list: state.cartList.cartList);
+                      return CartList(list: state.userCart.cartList);
                     } else if (state is CartItemRemovedState) {
-                      return CartList(list: state.cartList.cartList);
+                      return CartList(list: state.userCart.cartList);
                     } else if (state is CartErrorState) {
                       return Center(child: Text(state.e));
                     } else if (state is CartLoadingState) {
@@ -110,13 +110,12 @@ class CartScreen extends StatelessWidget {
                       builder: (contxt, state) {
                         UserCart? userCart;
                         switch (state.runtimeType) {
-                          case CartLoadedState:
                           case CartItemAddedState:
                           case CartItemDeleted:
                           case CartItemRemovedState:
+                          case CartLoadedState:
                             userCart = (state as dynamic).userCart;
-
-                            break;
+                          break;
                           case CartErrorState:
                             return const Text('Error');
                           case CartLoadingState:
@@ -142,15 +141,15 @@ class CartScreen extends StatelessWidget {
                                         BlocProvider.of<CartBloc>(context)
                                             .add(PayEvent());
                                       },
-                                      child: const Text('پرداخت')),
+                                      child: Text('پرداخت',style: MyStyles.caption)),
                                   Column(
                                     children: [
-                                      Text("قیمت: ${userCart.cartTotalPrice.separateWithComma} تومان"),
+                                      Text("قیمت: ${userCart.cartTotalPrice.separateWithComma} تومان",style: MyStyles.caption),
                                       Visibility(
                                           visible: userCart
                                                   .totalWithoutDiscountPrice !=
                                               userCart.cartTotalPrice,
-                                          child: Text("قیمت: ${userCart.totalWithoutDiscountPrice.separateWithComma} تومان")),
+                                          child: Text("قیمت: ${userCart.totalWithoutDiscountPrice.separateWithComma} تومان",style: MyStyles.caption)),
                                     ],
                                   )
                                 ],
