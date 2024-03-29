@@ -78,7 +78,10 @@ class _ShoppingCartItemState extends State<ShoppingCartItem> {
                             icon: SvgPicture.asset(Assets.svg.plus)),
                       ],
                     ),
-                  ],
+               Visibility(
+                visible:widget.cartModel.deleteLoading,
+                child: const LinearProgressIndicator()
+               )   ],
                 )),
                 Image.network(
                   widget.cartModel.image,
