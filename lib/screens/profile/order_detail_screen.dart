@@ -7,13 +7,13 @@ import 'package:watch_store_flutter/components/extention.dart';
 import 'package:watch_store_flutter/components/text_style.dart';
 import 'package:watch_store_flutter/data/model/order.dart';
 import 'package:watch_store_flutter/screens/profile/bloc/profile_bloc.dart';
-import '../gen/assets.gen.dart';
-import '../widget/custom_app_bar.dart';
-import '../../widget/surface_container.dart';
+import '../../gen/assets.gen.dart';
+import '../../widget/custom_app_bar.dart';
+import '../../../widget/surface_container.dart';
 
 class OrderDetailScreen extends StatelessWidget {
-  OrderDetailScreen({super.key, this.event});
-  final event;
+  OrderDetailScreen({super.key,required this.event});
+ final ProfileEvent event;
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<ProfileBloc>(context).add(event);
@@ -43,7 +43,7 @@ class OrderDetailScreen extends StatelessWidget {
               case CanceledOrderState:
               case ReceivedOrderState:
                 order = (state as dynamic).order;
-              return DetailsSurface(list: order[0].orderDetails);
+                return DetailsSurface(list: order[0].orderDetails);
 
               default:
                 return const Center(child: CircularProgressIndicator());
@@ -56,7 +56,7 @@ class OrderDetailScreen extends StatelessWidget {
 }
 
 class DetailsSurface extends StatelessWidget {
-  const DetailsSurface({super.key,required this.list});
+  const DetailsSurface({super.key, required this.list});
   final List<OrderDetail> list;
   @override
   Widget build(BuildContext context) {
@@ -80,13 +80,13 @@ class DetailsSurface extends StatelessWidget {
                       textDirection: TextDirection.rtl,
                     ),
                     Text(
-                      "قیمت: ${list[index].discountPrice.separateWithComma} تومان",
+                        "قیمت: ${list[index].discountPrice.separateWithComma} تومان",
                         style: MyStyles.caption),
                     Visibility(
                         visible:
                             (list[index].discountPrice != list[index].price),
                         child: Text(
-                          "قیمت: ${list[index].price.separateWithComma} تومان",
+                            "قیمت: ${list[index].price.separateWithComma} تومان",
                             style:
                                 MyStyles.caption.copyWith(color: Colors.blue))),
                   ],

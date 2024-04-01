@@ -20,7 +20,7 @@ class ProductListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        final productRepo=ProductListBloc(productRepository);
+        final productRepo = ProductListBloc(productRepository);
         productRepo.add(ProductListInit(param: param));
         return productRepo;
       },
@@ -30,12 +30,17 @@ class ProductListScreen extends StatelessWidget {
             child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-             ValueListenableBuilder(
-                      valueListenable: cartRepsitory.count,
-                      builder: (context, value, child) =>  CartBadge(count: value,)),
+            ValueListenableBuilder(
+                valueListenable: cartRepsitory.count,
+                builder: (context, value, child) => CartBadge(
+                      count: value,
+                    )),
             Row(
               children: [
-                Text('پرفروش ترین ها',style: MyStyles.title,),
+                Text(
+                  'پرفروش ترین ها',
+                  style: MyStyles.title,
+                ),
                 MyDimens.small.width,
                 SvgPicture.asset(Assets.svg.sort)
               ],
@@ -43,7 +48,8 @@ class ProductListScreen extends StatelessWidget {
             IconButton(
                 onPressed: () {
                   Navigator.pop(context);
-                }, icon: SvgPicture.asset(Assets.svg.close))
+                },
+                icon: SvgPicture.asset(Assets.svg.close))
           ],
         )),
         body: Column(

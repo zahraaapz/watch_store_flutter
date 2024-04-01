@@ -109,7 +109,7 @@ class VerticalText extends StatelessWidget {
               children: [
                 Transform.rotate(
                     angle: 1.5, child: SvgPicture.asset(Assets.svg.back)),
-                Text('مشاهده همه')
+                Text('مشاهده همه',style: MyStyles.amazingStyle)
               ],
             ),
             Text(

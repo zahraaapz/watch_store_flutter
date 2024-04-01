@@ -6,7 +6,7 @@ import 'package:watch_store_flutter/data/repo/user_info_repo.dart';
 import 'package:watch_store_flutter/res/color.dart';
 import 'package:watch_store_flutter/res/dimens.dart';
 import 'package:watch_store_flutter/res/string.dart';
-import 'package:watch_store_flutter/screens/order_detail_screen.dart';
+import 'package:watch_store_flutter/screens/profile/order_detail_screen.dart';
 import 'package:watch_store_flutter/screens/profile/bloc/profile_bloc.dart';
 import 'package:watch_store_flutter/widget/custom_app_bar.dart';
 import '../../gen/assets.gen.dart';
@@ -22,7 +22,6 @@ class ProfileScreen extends StatelessWidget {
       create: (context) {
         final profBloc = ProfileBloc(iUserInfoRepo);
         profBloc.add(ProfileInitEvent());
-
         return profBloc;
       },
       child: SafeArea(
