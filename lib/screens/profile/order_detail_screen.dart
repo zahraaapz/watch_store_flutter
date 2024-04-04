@@ -30,6 +30,8 @@ class OrderDetailScreen extends StatelessWidget {
             ),
             IconButton(
                 onPressed: () {
+                 BlocProvider.of<ProfileBloc>(context).add(ProfileInitEvent());
+
                   Navigator.pop(context);
                 },
                 icon: SvgPicture.asset(Assets.svg.close))
