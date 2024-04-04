@@ -12,7 +12,7 @@ import '../../widget/custom_app_bar.dart';
 import '../../../widget/surface_container.dart';
 
 class OrderDetailScreen extends StatelessWidget {
-  OrderDetailScreen({super.key,required this.event});
+  const OrderDetailScreen({super.key,required this.event});
  final ProfileEvent event;
   @override
   Widget build(BuildContext context) {
